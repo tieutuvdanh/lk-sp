@@ -2,8 +2,14 @@
 {
   .carousel-control
   { 
-    width: 4%;
-    background-image:none;
+     width: 50px;
+    background-image: none;
+    height: 50px;
+    top: 40%;
+    border-radius: 25px;
+    background: #fff;
+        opacity: 1!important;
+            box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.14) !important;
 
     &.left 
     {
@@ -18,7 +24,9 @@
 
   .cloneditem-1, 
   .cloneditem-2, 
-  .cloneditem-3
+  .cloneditem-3,
+  .cloneditem-4, 
+  .cloneditem-5
   {
     display: none;
   }
@@ -32,14 +40,14 @@
         > .item.active.right,
         > .item.next
         { 
-          transform: translate3d(50%, 0, 0);  
+          transform: translate3d(33.333%, 0, 0);  
           left: 0;
         }
 
         > .item.active.left,
         > .item.prev
         { 
-          transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-33.333%, 0, 0);
           left: 0;
         }
 
@@ -55,13 +63,13 @@
       > .active.left,
       > .prev
       {
-        left: -50%;
+        left: -33.333%;
       }
 
       > .active.right,
       > .next
       {
-        left:  50%;
+        left:  33.333%;
       }
 
       > .left,
@@ -71,7 +79,8 @@
         left: 0;
       }
 
-      .cloneditem-1 
+      .cloneditem-1,
+      .cloneditem-2
       {
         display: block;
       }
@@ -84,14 +93,14 @@
         > .item.active.right,
         > .item.next
         { 
-          transform: translate3d(25%, 0, 0);  
+          transform: translate3d(16.666%, 0, 0);  
           left: 0;
         }    
 
         > .item.active.left,
         > .item.prev
         { 
-          transform: translate3d(-25%, 0, 0);
+          transform: translate3d(-16.666%, 0, 0);
           left: 0;
         }
 
@@ -107,13 +116,13 @@
       > .active.left,
       > .prev
       {
-        left: -25%;
+        left: -16.666%;
       }
 
       > .active.right,
       > .next
       {
-        left:  25%;
+        left:  16.666%;
       }
 
       > .left,
@@ -123,57 +132,12 @@
         left: 0;
       }
 
-      .cloneditem-2, 
-      .cloneditem-3
+      .cloneditem-3,
+      .cloneditem-4, 
+      .cloneditem-5
       {
         display: block;
       }
     }    
   }
-}
-
-
-// demo setup only, not needed for carousel
-.container
-{
-  margin-bottom: 50px;
-}
-body
-{
-  font-family: 'Bitter', sans-serif;
-  color: #E54A41;
-  background-image: url('//static.rtpdesign.co.uk/blog/img/background.png');
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: 20%;
-}
-p
-{
-  font-family: 'Open Sans', sans-serif;
-  color: #333;
-  margin-bottom: 2em;
-}
-h2
-{
-  margin: 2em 0 1em;
-}
-
-.logo
-{
-  margin: 20px auto;
-  height: 100px;  
-  
-  @media only screen and (min-width : 768px) {  
-    margin: 28px;
-    float: left;
-  }
-}
-
-.title
-{
-  padding: 28px;
-  display: table-cell;
-  position: relative;
-  vertical-align: middle;
-  text-align: center;
 }
