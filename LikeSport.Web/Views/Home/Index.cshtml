@@ -6,14 +6,43 @@
 }
 
 <div class="section-header mheader">
-    <ol class="breadcrumb">
-        <li><a href="../../html/.html">home</a></li>
-        <li class="active">Blank page</li>
-    </ol>
+    <div class="btn-group">
+        <button type="button" class="button-label btn ink-reaction btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+            Type <i class="fa fa-angle-down text-default-green"></i>
+        </button>
+        <ul class="dropdown-menu animation-zoom" role="menu">
+            <li><a href="#">Add</a></li>
+            <li><a href="#">Edit</a></li>
+            <li><a href="#">Copy</a></li>
+            <li><a href="#">Print</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="fa fa-fw fa-times text-danger"></i> Remove item</a></li>
+        </ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="button-label btn ink-reaction btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+            Category <i class="fa fa-angle-down text-default-green"></i>
+        </button>
+        <ul class="dropdown-menu animation-zoom" role="menu">
+            <li><a href="#">Add</a></li>
+            <li><a href="#">Edit</a></li>
+            <li><a href="#">Copy</a></li>
+            <li><a href="#">Print</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="fa fa-fw fa-times text-danger"></i> Remove item</a></li>
+        </ul>
+    </div>
 </div><!--end .section-header -->
 <section>
-   
+
     <div class="section-body">
+        <div class="row">
+            <div class="col-md-12 title-column">
+                <span class="text-lg text-bold text-primary">Like Sport</span>
+                <a class="pull-right">See all <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="carousel carousel-showmanymoveone slide" id="carouselABC">
@@ -24,7 +53,7 @@
 
                                     <div class="card-body card-body-2">
                                         <div class="image">
-                                            <img src="~/Contents/img/avatar1.jpg"/>
+                                            <img src="~/Contents/img/avatar1.jpg" />
                                         </div>
                                         <div class="item-content">
                                             <a class="item-name twoLineTitle">
@@ -35,19 +64,19 @@
                                         <div class="item-activity">
                                             <div class="rating">
                                                 <fieldset class="rating">
-                                                    <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" title="Awesome - 5 stars"></label>
-                                                    <input type="radio" id="star4half" name="rating" value="4 and a half"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                                                    <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                                                    <input type="radio" id="star3half" name="rating" value="3 and a half"/><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                                    <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" title="Meh - 3 stars"></label>
-                                                    <input type="radio" id="star2half" name="rating" value="2 and a half"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                                                    <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                                    <input type="radio" id="star1half" name="rating" value="1 and a half"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                                    <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                                    <input type="radio" id="starhalf" name="rating" value="half"/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                                   
+                                                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                                                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                                                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                                                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                                                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+
                                                 </fieldset>
-                                               
+
                                             </div>
                                         </div>
                                     </div>
@@ -234,9 +263,9 @@
                                 </div>
                             </div>
                         </div>
-                
-                  
-                        
+
+
+
                     </div>
                     <a class="left carousel-control" href="#carouselABC" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
                     <a class="right carousel-control" href="#carouselABC" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
@@ -246,15 +275,39 @@
     </div><!--end .section-body -->
 
     <div class="container">
-     
-       
-        
+
+
+
     </div>
 
 </section>
 <script>
-    (function() {
-   
+    (function () {
+        $('button').click(function () {
+            $('body').append('<div  class="overlay"></div>');
+        });
+        $("body").mouseup(function () {
+            //if (!$(this).hasClass('dropdown-menu')) {
+            //    $('.overlay').remove();
+            //    $('div.btn-group').removeClass('open');
+            //}
+            $('.overlay').remove();
+           //$('div.btn-group').removeClass('open');
+        });
+        $(window).scroll(function () {
+            if (document.body.scrollTop == 0) {
+                //$(".mheader").css('box-shadow', 'none');
+                $(".mheader").css('box-shadow', 'none');
+
+            } else {
+                $(".mheader").css('box-shadow', '0 0.2px 0 0 rgba(0, 0, 0, 0.33)');
+
+            }
+        });
+        $(document).on('click', '.section-header .dropdown-menu', function (e) {
+            $('body').append('<div  class="overlay"></div>');
+            e.stopPropagation();
+        });
         $('#carouselABC').carousel({
             wrap: false,
             interval: false
@@ -278,8 +331,8 @@
         });
     }());
 
-    (function() {
-        $('.carousel-showmanymoveone .item').each(function() {
+    (function () {
+        $('.carousel-showmanymoveone .item').each(function () {
             var itemToClone = $(this);
             for (var i = 1; i < 6; i++) {
                 itemToClone = itemToClone.next();
@@ -300,4 +353,3 @@
         });
     }());
 </script>
-

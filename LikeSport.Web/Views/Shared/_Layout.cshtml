@@ -38,7 +38,7 @@
 <body class="menubar-hoverable header-fixed">
 
     <!-- BEGIN HEADER-->
-    <header id="header">
+    <header id="header" style="top: 0;">
         <div class="headerbar">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="headerbar-left">
@@ -165,29 +165,36 @@
                 <ul class="header-nav header-nav-options">
                     <li class="header-nav-brand">
                         <div class="brand-holder">
-                            <a href="#">
-                                <span class="text-bold ">For you</span>
+                            <a href="#" class="active-menu">
+                                <span class="text-bold ">Home</span>
                             </a>
                         </div>
                     </li>
                     <li class="header-nav-brand">
                         <div class="brand-holder">
-                            <a href="#">
-                                <span class="text-bold">Home</span>
+                            <a href="#"  >
+                                <span class="text-bold">Sell</span>
                             </a>
                         </div>
                     </li>
                     <li class="header-nav-brand ">
                         <div class="brand-holder">
-                            <a href="#" class="active-menu ">
-                                <span class="text-bold ">Experience</span>
+                            <a href="#">
+                                <span class="text-bold ">Hire</span>
                             </a>
                         </div>
                     </li>
                     <li class="header-nav-brand">
                         <div class="brand-holder">
                             <a href="#">
-                                <span class="text-bold">Places</span>
+                                <span class="text-bold">Experience</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="header-nav-brand">
+                        <div class="brand-holder">
+                            <a href="#">
+                                <span class="text-bold">Learn</span>
                             </a>
                         </div>
                     </li>
@@ -205,7 +212,7 @@
         </div><!--end .offcanvas-->
         <!-- END OFFCANVAS LEFT -->
         <!-- BEGIN CONTENT-->
-        <div id="content">
+        <div id="content" style="padding-top: 64px;">
 
             <!-- BEGIN BLANK SECTION -->
             @RenderBody()

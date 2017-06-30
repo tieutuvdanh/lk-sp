@@ -6,21 +6,30 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
+
+    a:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
 .mheader {
     position: fixed;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+    /*box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);*/
     z-index: 1004;
     background: #fff;
     width: 100%;
-   
+    padding-left: 25px;
     left: 0;
+    height: 50px!important;
 }
+
 section {
     top: 35px;
 }
+
 .headerbar-menu {
     position: absolute !important;
-    left: 13px !important;
+    left: 12px !important;
     top: 40px !important;
 }
 
@@ -248,6 +257,50 @@ h1 {
     margin: 10px;
 }
 
+.title-column {
+    padding: 0 24px 0 24px !important;
+    font-weight: 900;
+}
+
+
+.button-label {
+    cursor: pointer !important;
+    padding: 0 19px !important;
+    display: inline-block !important;
+    height: 32px !important;
+    color: #767676 !important;
+    background: none !important;
+    border: none !important;
+    border-right: none !important;
+    position: relative !important;
+    vertical-align: top !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    font-size: 15px !important;
+    line-height: 32px !important;
+    letter-spacing: 0.2px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    border-radius: 4px !important;
+    text-transform: none;
+}
+
+.button-label:hover {
+   
+    background: #f4f4f4!important;
+}
+.overlay {
+        position: fixed !important;
+    height: 100vh !important;
+    width: 100% !important;
+    top: 64px !important;
+    z-index: 1 !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+}
+.text-default-green {
+    color: #008489 !important;
+}
 /****** Style Star Rating Widget *****/
 
 .rating {
