@@ -168,6 +168,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SellController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -573,12 +574,19 @@
     <Content Include="Contents\img\avatar7.jpg" />
     <Content Include="Contents\img\avatar8.jpg" />
     <Content Include="Contents\img\avatar9.jpg" />
+    <Content Include="Contents\img\avatar\11a13c85-5b4b-4e22-983d-5cac5ef22619.jpg" />
     <Content Include="Contents\img\avatar\avatar.png" />
     <Content Include="Contents\img\avatar\avatar04.png" />
     <Content Include="Contents\img\avatar\avatar2.png" />
     <Content Include="Contents\img\avatar\avatar3.png" />
     <Content Include="Contents\img\avatar\avatar5.png" />
     <Content Include="Contents\img\LICENSE.txt" />
+    <Content Include="Contents\img\product\08b26b83-d2d3-45e9-919d-76931c3eb3a1.jpg" />
+    <Content Include="Contents\img\product\2320b2a3-53d2-4bf3-9fda-711ec2c64670.jpg" />
+    <Content Include="Contents\img\product\2c3fca27-e4d1-45c5-b498-d2e572eb3d3c.jpg" />
+    <Content Include="Contents\img\product\359b027b-210d-4a8c-8a18-fd17552cd632.jpg" />
+    <Content Include="Contents\img\product\3a642333-8236-48c4-9a92-966c9bed6aa0.jpg" />
+    <Content Include="Contents\img\product\752866be-801e-4f51-bb31-023477285660.jpg" />
     <Content Include="Contents\js\core\demo\Demo.js" />
     <Content Include="Contents\js\core\demo\DemoCalendar.js" />
     <Content Include="Contents\js\core\demo\DemoCharts.js" />
@@ -1952,10 +1960,10 @@
     <Content Include="Views\Home\DetailProduct.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Sell\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Contents\img\product\" />
     <Folder Include="Contents\img\slide\" />
     <Folder Include="Contents\js\core\cache\" />
     <Folder Include="Models\" />

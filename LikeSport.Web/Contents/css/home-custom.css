@@ -4,6 +4,7 @@
 
 a {
     text-decoration: none;
+    color: #008489;
     cursor: pointer;
 }
 
@@ -25,6 +26,7 @@ a {
 
 section {
     top: 35px;
+    padding: 0 !important;
 }
 
 .headerbar-menu {
@@ -47,7 +49,9 @@ section {
     border-bottom: 2px solid #008489 !important;
     padding-bottom: 8px !important;
 }
-
+.ruler-xxl {
+    margin: 0 !important;
+}
 .carousel-showmanymoveone .carousel-control {
     width: 50px;
     background-image: none;
@@ -70,103 +74,30 @@ section {
         margin-right: -15px;
     }
 
-.carousel-showmanymoveone .cloneditem-1,
-.carousel-showmanymoveone .cloneditem-2,
-.carousel-showmanymoveone .cloneditem-3 {
-    display: none;
+
+
+      /*.carousel-control 			 { width:  4%; }*/
+/*.carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}*/
+@media (max-width: 767px) {
+	.carousel-inner .active.left { left: -100%; }
+	.carousel-inner .next        { left:  100%; }
+	.carousel-inner .prev		 { left: -100%; }
+	.active > div { display:none; }
+	.active > div:first-child { display:block; }
+
 }
-
-@media all and (min-width: 768px) {
-    .carousel-showmanymoveone .carousel-inner > .active.left,
-    .carousel-showmanymoveone .carousel-inner > .prev {
-        left: -50%;
-    }
-
-    .carousel-showmanymoveone .carousel-inner > .active.right,
-    .carousel-showmanymoveone .carousel-inner > .next {
-        left: 50%;
-    }
-
-    .carousel-showmanymoveone .carousel-inner > .left,
-    .carousel-showmanymoveone .carousel-inner > .prev.right,
-    .carousel-showmanymoveone .carousel-inner > .active {
-        left: 0;
-    }
-
-    .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
-        display: block;
-    }
+@media (min-width: 767px) and (max-width: 992px ) {
+	.carousel-inner .active.left { left: -50%; }
+	.carousel-inner .next        { left:  50%; }
+	.carousel-inner .prev		 { left: -50%; }
+	.active > div { display:none; }
+	.active > div:first-child { display:block; }
+	.active > div:first-child + div { display:block; }
 }
-
-@media all and (min-width: 768px) and (transform-3d), all and (min-width: 768px) and (-webkit-transform-3d) {
-    .carousel-showmanymoveone .carousel-inner > .item.active.right,
-    .carousel-showmanymoveone .carousel-inner > .item.next {
-        -webkit-transform: translate3d(50%, 0, 0);
-        transform: translate3d(50%, 0, 0);
-        left: 0;
-    }
-
-    .carousel-showmanymoveone .carousel-inner > .item.active.left,
-    .carousel-showmanymoveone .carousel-inner > .item.prev {
-        -webkit-transform: translate3d(-50%, 0, 0);
-        transform: translate3d(-50%, 0, 0);
-        left: 0;
-    }
-
-        .carousel-showmanymoveone .carousel-inner > .item.left,
-        .carousel-showmanymoveone .carousel-inner > .item.prev.right,
-        .carousel-showmanymoveone .carousel-inner > .item.active {
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-            left: 0;
-        }
-}
-
-@media all and (min-width: 992px) {
-    .carousel-showmanymoveone .carousel-inner > .active.left,
-    .carousel-showmanymoveone .carousel-inner > .prev {
-        left: -25%;
-    }
-
-    .carousel-showmanymoveone .carousel-inner > .active.right,
-    .carousel-showmanymoveone .carousel-inner > .next {
-        left: 25%;
-    }
-
-    .carousel-showmanymoveone .carousel-inner > .left,
-    .carousel-showmanymoveone .carousel-inner > .prev.right,
-    .carousel-showmanymoveone .carousel-inner > .active {
-        left: 0;
-    }
-
-    .carousel-showmanymoveone .carousel-inner .cloneditem-2,
-    .carousel-showmanymoveone .carousel-inner .cloneditem-3 {
-        display: block;
-    }
-}
-
-@media all and (min-width: 992px) and (transform-3d), all and (min-width: 992px) and (-webkit-transform-3d) {
-    .carousel-showmanymoveone .carousel-inner > .item.active.right,
-    .carousel-showmanymoveone .carousel-inner > .item.next {
-        -webkit-transform: translate3d(50%, 0, 0);
-        transform: translate3d(50%, 0, 0);
-        left: 0;
-    }
-
-    .carousel-showmanymoveone .carousel-inner > .item.active.left,
-    .carousel-showmanymoveone .carousel-inner > .item.prev {
-        -webkit-transform: translate3d(-50%, 0, 0);
-        transform: translate3d(-50%, 0, 0);
-        left: 0;
-    }
-
-        .carousel-showmanymoveone .carousel-inner > .item.left,
-        .carousel-showmanymoveone .carousel-inner > .item.prev.right,
-        .carousel-showmanymoveone .carousel-inner > .item.active {
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-            left: 0;
-        }
+@media (min-width: 992px ) {
+	.carousel-inner .active.left { left: -25%; }
+	.carousel-inner .next        { left:  25%; }
+	.carousel-inner .prev		 { left: -25%; }	
 }
 
 
@@ -182,8 +113,8 @@ section {
 
 .mitem {
     border-radius: 5px;
-    width: 185px;
-    min-height: 270px;
+    width: 203px;
+    min-height: 305px;
 }
 
 .card-body-2 {
@@ -193,8 +124,8 @@ section {
 .image {
     position: relative;
     display: block;
-    width: 185px;
-    height: 185px;
+    width: 203px;
+    height: 305px;
     overflow: hidden;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -202,8 +133,12 @@ section {
 
     .image img {
         width: 100%;
+        min-height: 305px;
     }
-
+.img-detail {
+      width: 100%;
+       min-height: 548px;
+}
 .item-content {
     padding: 4px 12px 6px;
     position: relative;
@@ -233,11 +168,30 @@ section {
 .price {
     color: #9b9b9b;
 }
-
+.price-detail {
+    color: #484848 !important;
+    font-weight: 700 !important;
+    word-wrap: break-word !important;
+    font-size: 15px !important;
+    line-height: 18px !important;
+    display: inline !important;
+}
 .fa-comment {
     color: #9b9b9b;
 }
-
+#base {
+    overflow: visible !important;
+}
+.category-menu {
+    width: 600px;
+}
+.style-success-screen {
+        margin: 2px;
+    background: #008489!important;
+    width: 20px;
+    height: 20px;
+    padding: 5px 7px 5px 5px;
+}
 /* CSS used here will be applied after bootstrap.css */
 /*.left {
 	display: none;
@@ -252,10 +206,10 @@ body {
     margin: 20px;
 }
 
-h1 {
+/*h1 {
     font-size: 1.5em;
     margin: 10px;
-}
+}*/
 
 .title-column {
     padding: 0 24px 0 24px !important;
@@ -297,6 +251,15 @@ h1 {
     top: 64px !important;
     z-index: 1 !important;
     background: rgba(255, 255, 255, 0.85) !important;
+}
+.review {
+        position: absolute;
+    margin-top: 9px;
+}
+.btn-purchase {
+    height: 45px;
+    width: 140px;
+
 }
 .text-default-green {
     color: #008489 !important;
@@ -343,5 +306,48 @@ h1 {
         .rating > input:checked ~ label:hover,
         .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
         .rating > input:checked ~ label:hover ~ label {
+            color: #FFED85;
+        }
+
+.rating-2 {
+    border: none;
+    float: left;
+}
+
+    .rating-2 > input {
+        display: none;
+    }
+
+    .rating-2 > label:before {
+        margin: 2px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating-2 > .half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating-2 > label {
+        color: #ddd;
+        float: right;
+    }
+
+    /***** CSS Magic to Highlight Stars on Hover *****/
+
+    .rating-2 > input:checked ~ label, /* show gold star when clicked */
+    .rating-2:not(:checked) > label:hover, /* hover current star */
+    .rating-2:not(:checked) > label:hover ~ label {
+        color: #FFD700;
+    }
+        /* hover previous stars in list */
+
+        .rating-2 > input:checked + label:hover, /* hover current star when changing rating */
+        .rating-2 > input:checked ~ label:hover,
+        .rating-2 > label:hover ~ input:checked ~ label, /* lighten current selection */
+        .rating-2 > input:checked ~ label:hover ~ label {
             color: #FFED85;
         }
