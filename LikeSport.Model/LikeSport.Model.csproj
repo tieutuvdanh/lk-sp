@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,7 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="Activity.cs" />
+    <Compile Include="ActivityGroup.cs" />
+    <Compile Include="ActivityInformation.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="ChatInformation.cs" />
+    <Compile Include="Device.cs" />
+    <Compile Include="Feeback.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="Promotion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rate.cs" />
+    <Compile Include="Review.cs" />
+    <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
