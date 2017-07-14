@@ -72,6 +72,7 @@ namespace LikeSport.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ActivityName = c.String(nullable: false),
+                        Image = c.String(nullable: false),
                         State = c.String(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(nullable: false),

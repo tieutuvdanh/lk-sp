@@ -35,17 +35,16 @@ namespace LikeSport.Web.Infrastructure.Extensions
             one.ActivityGroup_Id = two.ActivityGroup_Id;
 
         }
-        public static void UpdateActivityGroup(this Activity one, ActivityViewModel two)
+        public static void UpdateActivityGroup(this ActivityGroup one, ActivityGroupViewModel two)
         {
 
             one.Id = two.Id;
-            one.ActivityName = two.ActivityName;
+            one.ActivityGroupName = two.ActivityGroupName;
             one.State = two.State;
             one.CreatedDate = two.CreatedDate;
             one.ModifiedDate = two.ModifiedDate;
             one.CreatedBy = two.CreatedBy;
             one.ModifiedBy = two.ModifiedBy;
-            one.ActivityGroup_Id = two.ActivityGroup_Id;
 
         }
         public static void UpdateActivityInformation(this Activity one, ActivityViewModel two)

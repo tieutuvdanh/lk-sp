@@ -47,7 +47,7 @@ namespace LikeSport.Service
 
         public IEnumerable<Activity> GetAllActivity()
         {
-            return _activityRepository.GetAll();
+            return _activityRepository.GetAll(new string[] { "ActivityGroup" });
         }
         public void SaveActivity()
         {

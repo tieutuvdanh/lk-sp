@@ -20,6 +20,8 @@ namespace LikeSport.Model
         public string ActivityName { get; set; }
 
         [Required]
+        public string Image { get; set; }
+        [Required]
         public string State { get; set; }
 
         public DateTime CreatedDate { get; set; }

@@ -14,6 +14,7 @@ namespace LikeSport.Model
         public string Street { get; set; }
 
         [Required]
+       
         public string City { get; set; }
 
         [Required]

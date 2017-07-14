@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ActivityController.cs" />
+    <Compile Include="Api\ActivityGroupController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -1691,11 +1692,14 @@
     <Content Include="Contents\js\libs\wizard\jquery.bootstrap.wizard.js" />
     <Content Include="Contents\js\libs\wizard\jquery.bootstrap.wizard.min.js" />
     <Content Include="Contents\js\libs\wizard\MIT-LICENSE.txt" />
+    <Content Include="Contents\js\loadmore.js" />
     <Content Include="Contents\less\libs\bootstrap-colorpicker\modified-log.txt" />
     <Content Include="Contents\less\libs\DataTables\license.txt" />
     <Content Include="Contents\less\libs\fullcalendar\license.txt" />
     <Content Include="Contents\less\libs\multi-select\LICENSE.txt" />
     <Content Include="Contents\less\libs\wizard\MIT-LICENSE.txt" />
+    <Content Include="Contents\progressively\progressively.min.css" />
+    <Content Include="Contents\progressively\progressively.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

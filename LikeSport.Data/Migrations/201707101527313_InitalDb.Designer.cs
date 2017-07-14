@@ -13,7 +13,7 @@ namespace LikeSport.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201707081701575_InitalDb"; }
+            get { return "201707101527313_InitalDb"; }
         }
         
         string IMigrationMetadata.Source
