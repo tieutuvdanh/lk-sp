@@ -220,13 +220,13 @@
 	// =========================================================================
 
 	p._initButtonStates = function () {
-		$('.btn-loading-state').click(function () {
-			var btn = $(this);
-			btn.button('loading');
-			setTimeout(function () {
-				btn.button('reset');
-			}, 3000);
-		});
+		//$('.btn-loading-state').click(function () {
+		//	var btn = $(this);
+		//	btn.button('loading');
+		//	setTimeout(function () {
+		//		btn.button('reset');
+		//	}, 3000);
+		//});
 	};
 
 	// =========================================================================

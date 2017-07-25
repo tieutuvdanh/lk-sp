@@ -13,6 +13,7 @@ namespace LikeSport.Service
     public interface IActivityService
     {
         IEnumerable<Activity> GetAllActivity();
+        IEnumerable<Activity> GetAllByGroupId(int id);
         Activity Add(Activity activity);
         Activity GetById(int id);
         void Update(Activity activity);
@@ -35,6 +36,12 @@ namespace LikeSport.Service
           
             this._unitOfWork = unitOfWork;
         }
+
+        public IEnumerable<Activity> GetAllByGroupId(int id)
+        {
+            return _activityRepository.GetAllByGroupId(id);
+        }
+
         public Activity Add(Activity activity)
         {
            return _activityRepository.Add(activity);

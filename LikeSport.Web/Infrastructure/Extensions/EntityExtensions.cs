@@ -47,17 +47,26 @@ namespace LikeSport.Web.Infrastructure.Extensions
             one.ModifiedBy = two.ModifiedBy;
 
         }
-        public static void UpdateActivityInformation(this Activity one, ActivityViewModel two)
+        public static void UpdateActivityInformation(this ActivityInformation one, ActivityInformationViewModel two)
         {
 
             one.Id = two.Id;
-            one.ActivityName = two.ActivityName;
-            one.State = two.State;
+            one.Title = two.Title;
+            one.Image = two.Image;
+            one.StartTime = two.StartTime;
+            one.EndTime = two.EndTime;
+            one.TagName = two.TagName;
+            one.Views = two.Views;
+            one.Description = two.Description;
+            one.Status = two.Status;
+            one.Activity_Id = two.Activity_Id;
+            one.Service_Id = two.Service_Id;
+            one.UserProfile_Id = two.UserProfile_Id;
             one.CreatedDate = two.CreatedDate;
             one.ModifiedDate = two.ModifiedDate;
             one.CreatedBy = two.CreatedBy;
             one.ModifiedBy = two.ModifiedBy;
-            one.ActivityGroup_Id = two.ActivityGroup_Id;
+        
 
         }
         public static void UpdateAddress(this Activity one, ActivityViewModel two)
@@ -164,17 +173,17 @@ namespace LikeSport.Web.Infrastructure.Extensions
             one.ActivityGroup_Id = two.ActivityGroup_Id;
 
         }
-        public static void UpdateService(this Activity one, ActivityViewModel two)
+        public static void UpdateService(this Model.Service one, ServiceViewModel two)
         {
 
             one.Id = two.Id;
-            one.ActivityName = two.ActivityName;
+            one.NameType = two.NameType;
             one.State = two.State;
             one.CreatedDate = two.CreatedDate;
             one.ModifiedDate = two.ModifiedDate;
             one.CreatedBy = two.CreatedBy;
             one.ModifiedBy = two.ModifiedBy;
-            one.ActivityGroup_Id = two.ActivityGroup_Id;
+       
 
         }
     }

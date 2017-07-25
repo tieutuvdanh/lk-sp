@@ -20,6 +20,18 @@ namespace LikeSport.Web
             url: "Trang-chu",
             defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            // Xem tất cả activity thuộc một group nào đó
+            routes.MapRoute(
+            name: "View-all-activity",
+            url: "View-all-activity/{name}-{id}",
+            defaults: new { controller = "Home", action = "AllActivityInGroup", id = UrlParameter.Optional }
+            );
+            // Xem tất cả activity infomation thuộc một activity nào đó
+            routes.MapRoute(
+            name: "View-all-activity-infomation",
+            url: "View-all-activity-infomation/{name}-{id}",
+            defaults: new { controller = "Home", action = "AllActivityInfomationInActivity", id = UrlParameter.Optional }
+            );
             // Tìm kiếm
             routes.MapRoute(
             name: "Search",

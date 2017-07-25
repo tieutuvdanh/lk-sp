@@ -12,6 +12,8 @@ namespace LikeSport.Data.Respositories
     {
         Activity GetActivityByName(string activityName);
         IEnumerable<Activity> GetAllActivities();
+        IEnumerable<Activity> GetAllByGroupId(int id);
+        
     }
     public class ActivityRepository : RepositoryBase<Activity>, IActivityRepository
     {
@@ -27,6 +29,11 @@ namespace LikeSport.Data.Respositories
         public IEnumerable<Activity> GetAllActivities()
         {
             return this.DbContext.Activities.OrderByDescending(m=>m.CreatedDate);
+        }
+
+        public IEnumerable<Activity> GetAllByGroupId(int id)
+        {
+            return this.DbContext.Activities.Where(m => m.ActivityGroup_Id==id).OrderByDescending(m=>m.CreatedDate);
         }
 
         public Activity Add(Activity entity)

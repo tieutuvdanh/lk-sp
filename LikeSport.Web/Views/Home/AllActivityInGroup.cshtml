@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "AllActivityInGroup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+  
+}
+@model List<LikeSport.Web.Models.ActivityViewModel>
+<link href="~/Contents/progressively/progressively.min.css" rel="stylesheet" />
+<div class="section-header mheader">
+    @*<div class="btn-group">
+            <button type="button" class="button-label btn ink-reaction btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                Type <i class="fa fa-angle-down text-default-green"></i>
+            </button>
+            <ul class="dropdown-menu animation-zoom" role="menu">
+                <li><a href="#">Add</a></li>
+                <li><a href="#">Edit</a></li>
+                <li><a href="#">Copy</a></li>
+                <li><a href="#">Print</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-fw fa-times text-danger"></i> Remove item</a></li>
+            </ul>
+        </div>*@
+    <div class="btn-group">
+        <button type="button" class="button-label btn ink-reaction btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+            Activity Group
+            <sup class="badge style-success-screen" style="display: none; margin: 2px; background: #008489 !important;    padding: 6px 4px 0px 2px;" id="amount" ></sup>
+            <i class="fa fa-angle-down text-default-green"></i>
+        </button>
+        <div class="dropdown-menu animation-zoom category-menu" role="menu">
+            <div style="padding: 20px">
+                <div class="row" style="display: inline-flex;">
+                    @if (Model.Any())
+                    {
+                        var loop = Model.Count / 6;
+                        var skip = 0;
+                        for (int i = 0; i < loop; i++)
+                        {
+                            <div class="col-md-5">
+                                @foreach (var item in Model.Skip(skip).Take(6))
+                                {
+
+                                    <p>
+                                        <label class="checkbox-inline checkbox-styled">
+                                            <input onclick="onchecking(this)" type="checkbox" value="@item.Id"><span>@item.ActivityName</span>
+                                        </label>
+                                    </p>
+
+                                }
+                            </div>
+                            skip += 6;
+                        }
+
+                    }
+
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"><button type="button" id="btnCancel" class="btn btn-block ink-reaction btn-flat btn-danger">Cancel</button></div>
+                    <div class="col-sm-3 pull-right">
+                        <button type="button" id="btnApply" onclick="_fnApply()" class="btn btn-block ink-reaction btn-flat btn-primary ">Apply</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!--end .section-header -->
+<section id="se">
+
+    <div class="section-body" id="listactivity">
+
+    </div>
+    <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4 text-center">
+            <button type="button" id="btn" class="btn ink-reaction btn-flat btn-primary btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i>Loading...">Load more ...</button>
+        </div>
+        <div class="col-xs-4"></div>
+    </div>
+
+
+</section>
+<input type="hidden" id="IdGroup" value="@ViewBag.IdGroup"/>
+<script src="~/Contents/js/tujs/allactivityingroup.js"></script>

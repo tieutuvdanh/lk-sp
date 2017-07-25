@@ -18,16 +18,27 @@
     $.extend(Plugin.prototype, {
         inIt: function () {
             var self = this;
+            //$('#fountainG').show();
+          
             $.ajax({
                 method: 'GET',
                 url: self.options.url,
                 dataType: 'json',
+                beforeSend: function () {
+                    $(self.options.loadBtn).attr('disabled', 'disable');
+                    $(self.options.loadBtn).html("<i class='fa fa-spinner fa-spin'></i> Loading...");
+                },
+                complete: function () {
+                    $(self.options.loadBtn).prop("disabled", false);
+                    $(self.options.loadBtn).html("Load more ...");
+                },
                 success: function (d, msg) {
                     self.data.push(d);
                     if (self.data[0].length <= self.options.limit) {
                         self.Out();
                     } else {
                         self.More();
+                      
                     }
                     self.firstLoad.push(self.data[0].splice(0, self.options.limit));
                     self.options.getData(self.elem, self.firstLoad[0]);
@@ -38,9 +49,12 @@
             });
         },
         More: function () {
+           
             var self = this;
             var i = 0;
-            $(self.options.loadBtn).click(function () {
+            $(self.options.loadBtn).click(function() {
+
+                $(self.options.loadBtn).button('loading');
                 i += 1;
                 if (self.data[0].length) {
                     self.firstLoad.push(self.data[0].splice(0, self.options.loadItem));
@@ -48,8 +62,12 @@
                 }
                 if (self.data[0].length == 0) {
                     self.Out();
+
                 }
-            })
+                setTimeout(function () {
+                              $(self.options.loadBtn).button('reset');
+                        }, 1000);
+            });
         },
         Out: function () {
             var self = this;
@@ -67,7 +85,7 @@
     ------------------------------------------------------------*/
     $.fn[PluginName].default = {
         url: '',
-        limit: 3,
+        limit: 50000,
         loadItem: 3,
         loadBtn: '#btn',
         getData: function (elem, data) {

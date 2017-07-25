@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -11,42 +13,30 @@ using LikeSport.Web.Models;
 
 namespace LikeSport.Web.Api
 {
-    [RoutePrefix("api/activity")]
-    public class ActivityController : ApiControllerBase
+    [RoutePrefix("api/service")]
+    public class ServiceController : ApiControllerBase
     {
-        private readonly IActivityService _activityService;
+        private readonly IServiceService _service;
 
-        public ActivityController(IActivityService activityService)
+        public ServiceController(IServiceService serviceService)
         {
-            _activityService = activityService;
+            _service = serviceService;
         }
-
         [Route("getall")]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
-            var listActivity = _activityService.GetAllActivity();
+            var list = _service.GetAllService();
 
 
-            var listActivityVm = Mapper.Map<List<ActivityViewModel>>(listActivity);
+            var listVm = Mapper.Map<List<ServiceViewModel>>(list);
 
-            var response = request.CreateResponse(HttpStatusCode.OK, listActivityVm);
-
-            return response;
-        }
-        [Route("getallbygroupid")]
-        public HttpResponseMessage GetAllByGroupId(HttpRequestMessage request,int id)
-        {
-            var listActivity = _activityService.GetAllByGroupId(id);
-
-
-            var listActivityVm = Mapper.Map<List<ActivityViewModel>>(listActivity);
-
-            var response = request.CreateResponse(HttpStatusCode.OK, listActivityVm);
+            var response = request.CreateResponse(HttpStatusCode.OK, listVm);
 
             return response;
         }
+
         [Route("add")]
-        public HttpResponseMessage Post(HttpRequestMessage request, ActivityViewModel mActivity)
+        public HttpResponseMessage Post(HttpRequestMessage request, ServiceViewModel mModel)
         {
             HttpResponseMessage response = null;
             if (ModelState.IsValid)
@@ -55,13 +45,13 @@ namespace LikeSport.Web.Api
             }
             else
             {
-                var newActivity = new Activity();
+                var newModel = new Model.Service();
 
-                newActivity.UpdateActivity(mActivity);
+                newModel.UpdateService(mModel);
 
-                var activity = _activityService.Add(newActivity);
+                var activity = _service.Add(newModel);
 
-                _activityService.SaveActivity();
+                _service.SaveService();
 
                 response = request.CreateResponse(HttpStatusCode.Created, activity);
             }
@@ -69,7 +59,7 @@ namespace LikeSport.Web.Api
         }
 
         [Route("update")]
-        public HttpResponseMessage Put(HttpRequestMessage request, ActivityViewModel mActivity)
+        public HttpResponseMessage Put(HttpRequestMessage request, ServiceViewModel mModel)
         {
             HttpResponseMessage response = null;
             if (ModelState.IsValid)
@@ -78,12 +68,12 @@ namespace LikeSport.Web.Api
             }
             else
             {
-                var activity = _activityService.GetById(mActivity.Id);
+                var model = _service.GetById(mModel.Id);
 
-                activity.UpdateActivity(mActivity);
+                model.UpdateService(mModel);
 
-                _activityService.Update(activity);
-                _activityService.SaveActivity();
+                _service.Update(model);
+                _service.SaveService();
 
                 response = request.CreateResponse(HttpStatusCode.OK);
             }
@@ -100,8 +90,8 @@ namespace LikeSport.Web.Api
             }
             else
             {
-                _activityService.Delete(id);
-                _activityService.SaveActivity();
+                _service.Delete(id);
+                _service.SaveService();
 
                 response = request.CreateResponse(HttpStatusCode.OK);
             }

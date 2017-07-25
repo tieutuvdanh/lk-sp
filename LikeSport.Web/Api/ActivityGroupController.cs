@@ -19,6 +19,7 @@ namespace LikeSport.Web.Api
         public ActivityGroupController(IActivityGroupService activityGroupService)
         {
             _activityGroupService = activityGroupService;
+
         }
 
         [Route("getall")]

@@ -22,6 +22,8 @@ namespace LikeSport.Model
         [Required]
         public string Title { get; set; }
 
+        public string Image { get; set; }
+
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }

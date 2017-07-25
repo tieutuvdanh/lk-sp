@@ -763,7 +763,7 @@ if (typeof jQuery === 'undefined') {
 
   Dropdown.prototype.toggle = function (e) {
     var $this = $(this)
-
+    $('body').append('<div class="overlay"></div>');
     if ($this.is('.disabled, :disabled')) return
 
     var $parent  = getParent($this)
@@ -841,6 +841,7 @@ if (typeof jQuery === 'undefined') {
       if (e.isDefaultPrevented()) return
 
       $this.attr('aria-expanded', 'false')
+      $('.overlay').remove();
       $parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
     })
   }
@@ -889,9 +890,11 @@ if (typeof jQuery === 'undefined') {
 
   // APPLY TO STANDARD DROPDOWN ELEMENTS
   // ===================================
-
+  
   $(document)
-    .on('click.bs.dropdown.data-api', clearMenus)
+     .on('click.bs.dropdown.data-api', clearMenus)
+     .on('click', '#btnApply', clearMenus)
+        .on('click', '#btnCancel', clearMenus)
     .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)

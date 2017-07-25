@@ -23,10 +23,10 @@ namespace LikeSport.Web.App_Start
     {
         public void Configuration(IAppBuilder app)
         {
-         
+
             // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
             ConfigAutofac(app);
-     
+
 
         }
         private void ConfigAutofac(IAppBuilder app)
@@ -50,6 +50,14 @@ namespace LikeSport.Web.App_Start
               .Where(t => t.Name.EndsWith("Repository"))
               .AsImplementedInterfaces().InstancePerRequest(); ;
 
+            builder.RegisterAssemblyTypes(typeof(ServiceRepository).Assembly)
+            .Where(t => t.Name.EndsWith("Repository"))
+            .AsImplementedInterfaces().InstancePerRequest();
+
+            builder.RegisterAssemblyTypes(typeof(ActivityInfomationRepository).Assembly)
+           .Where(t => t.Name.EndsWith("Repository"))
+           .AsImplementedInterfaces().InstancePerRequest(); ;
+
             // Services
             builder.RegisterAssemblyTypes(typeof(ActivityService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
@@ -57,6 +65,13 @@ namespace LikeSport.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(ActivityGroupService).Assembly)
              .Where(t => t.Name.EndsWith("Service"))
              .AsImplementedInterfaces().InstancePerRequest(); ;
+
+            builder.RegisterAssemblyTypes(typeof(ServiceService).Assembly)
+          .Where(t => t.Name.EndsWith("Service"))
+          .AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterAssemblyTypes(typeof(ActivityInfomationService).Assembly)
+        .Where(t => t.Name.EndsWith("Service"))
+        .AsImplementedInterfaces().InstancePerRequest(); ;
 
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

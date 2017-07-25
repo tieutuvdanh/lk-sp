@@ -19,8 +19,7 @@ namespace LikeSport.Model
         [Required]
         public string ActivityName { get; set; }
 
-        [Required]
-        public string Image { get; set; }
+       
         [Required]
         public string State { get; set; }
 

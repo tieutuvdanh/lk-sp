@@ -9,7 +9,7 @@ namespace LikeSport.Web.Models
 
 
         public string ActivityName { get; set; }
-        public string Image { get; set; }
+     
 
         public string State { get; set; }
 

@@ -116,6 +116,14 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -192,6 +200,8 @@
   <ItemGroup>
     <Compile Include="Api\ActivityController.cs" />
     <Compile Include="Api\ActivityGroupController.cs" />
+    <Compile Include="Api\ActivityInfomationController.cs" />
+    <Compile Include="Api\ServiceController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -660,6 +670,8 @@
     <Content Include="Contents\js\core\source\AppNavSearch.js" />
     <Content Include="Contents\js\core\source\AppOffcanvas.js" />
     <Content Include="Contents\js\core\source\AppVendor.js" />
+    <Content Include="Contents\js\knockout-2.2.0.js" />
+    <Content Include="Contents\js\knockout-3.4.2.js" />
     <Content Include="Contents\js\libs\autosize\jquery.autosize.js" />
     <Content Include="Contents\js\libs\autosize\jquery.autosize.min.js" />
     <Content Include="Contents\js\libs\autosize\license.txt" />
@@ -1693,11 +1705,14 @@
     <Content Include="Contents\js\libs\wizard\jquery.bootstrap.wizard.min.js" />
     <Content Include="Contents\js\libs\wizard\MIT-LICENSE.txt" />
     <Content Include="Contents\js\loadmore.js" />
+    <Content Include="Contents\js\tujs\allactivityingroup.js" />
+    <Content Include="Contents\js\tujs\tu-index-js.js" />
     <Content Include="Contents\less\libs\bootstrap-colorpicker\modified-log.txt" />
     <Content Include="Contents\less\libs\DataTables\license.txt" />
     <Content Include="Contents\less\libs\fullcalendar\license.txt" />
     <Content Include="Contents\less\libs\multi-select\LICENSE.txt" />
     <Content Include="Contents\less\libs\wizard\MIT-LICENSE.txt" />
+    <Content Include="Contents\progressively\progressively.js" />
     <Content Include="Contents\progressively\progressively.min.css" />
     <Content Include="Contents\progressively\progressively.min.js" />
     <Content Include="favicon.ico" />
@@ -2011,6 +2026,9 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Sell\Index.cshtml" />
+    <Content Include="Views\Home\Header.cshtml" />
+    <Content Include="Views\Home\AllActivityInGroup.cshtml" />
+    <Content Include="Views\Home\AllActivityInfomationInActivity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2077,6 +2095,11 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
