@@ -48,7 +48,7 @@ namespace LikeSport.Web.Api
             return response;
         }
         [Route("getallbymultilactivityid")]
-        public HttpResponseMessage GetByMutilActivityId(HttpRequestMessage request, string id)
+        public HttpResponseMessage GetByMutilActivityId(HttpRequestMessage request, string id, int groupId)
         {
             if (!String.IsNullOrEmpty(id))
             {
@@ -62,11 +62,12 @@ namespace LikeSport.Web.Api
 
             else
             {
-                var list = _service.GetAll();
+                var list = _service.GetAllByActivityGroupId(groupId);
 
                 var listVm = Mapper.Map<List<ActivityInformationViewModel>>(list);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, listVm);
+
                 return response;
             }
            
@@ -77,8 +78,8 @@ namespace LikeSport.Web.Api
             var list = _service.GetAllByActivityGroupId(id);
 
 
+            //var listVm = Mapper.Map<IEnumerable<ActivityInformation>, IEnumerable<ActivityInformationViewModel>>(list);
             var listVm = Mapper.Map<List<ActivityInformationViewModel>>(list);
-
             var response = request.CreateResponse(HttpStatusCode.OK, listVm);
 
             return response;

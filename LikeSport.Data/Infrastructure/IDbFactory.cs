@@ -1,14 +1,11 @@
-﻿/// <summary>
-/// This Interface is response create new Install access db.
-/// </summary>
+﻿
+using System;
+
 namespace LikeSport.Data.Infrastructure
 {
-    public interface IDbFactory
+    public interface IDbFactory : IDisposable
     {
-        /// <summary>
-        /// Initital Object DB
-        /// </summary>
-        /// <returns>ActivitySportObject.</returns>
+ 
         ActivitySportDbContext Init();
     }
 }

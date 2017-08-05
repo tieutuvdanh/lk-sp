@@ -1,13 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace LikeSport.Data.Infrastructure
 {
-    // Operator CRUD in database.
-    // IRepository<T> is Generic interface with input type T is type. 
-    // where T : class is mean contrain T must type class, interface, delegate, array type.
-    // Example: Type is class: Activity, Address, Group...
+
     public interface IRepository<T> where T : class
     {
         #region
@@ -30,6 +28,7 @@ namespace LikeSport.Data.Infrastructure
         T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null);
 
         IQueryable<T> GetAll(string[] includes = null);
+        IQueryable<T> GetById(int id,string[] includes = null);
 
         IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null);
 

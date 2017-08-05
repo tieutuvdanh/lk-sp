@@ -9,9 +9,8 @@ namespace LikeSport.Web.Models
     {
         public int Id { get; set; }
 
-       
-        public string Rated { get; set; }
-
+        public int Point { get; set; }
+        public string Account { get; set; }
         public DateTime CreatedDate { get; set; }
 
         public DateTime ModifiedDate { get; set; }

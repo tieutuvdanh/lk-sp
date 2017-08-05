@@ -12,6 +12,7 @@ namespace LikeSport.Data.Respositories
     {
         ActivityGroup GetActivityGroupByName(string activityName);
         IEnumerable<ActivityGroup> GetAllActivityGroups();
+        IEnumerable<ActivityGroup> GetAllByMulti(List<int> listId);
     }
    public  class ActivityGroupRepository : RepositoryBase<ActivityGroup>, IActivityGroupRepository
     {
@@ -28,19 +29,9 @@ namespace LikeSport.Data.Respositories
         {
             return this.DbContext.ActivityGroups.OrderByDescending(m => m.CreatedDate);
         }
-        public ActivityGroup Add(ActivityGroup entity)
+        public IEnumerable<ActivityGroup> GetAllByMulti(List<int> listId)
         {
-            throw new NotImplementedException();
-        }
-
-        public ActivityGroup Delete(ActivityGroup entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ActivityGroup Delete(int id)
-        {
-            throw new NotImplementedException();
+            return this.DbContext.ActivityGroups.Where(m => listId.Contains(m.Id));
         }
     }
 }

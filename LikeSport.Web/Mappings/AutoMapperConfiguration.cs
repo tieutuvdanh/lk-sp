@@ -10,18 +10,20 @@ namespace LikeSport.Web.Mappings
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<ActivityGroup, ActivityGroupViewModel>().ReverseMap();
-                cfg.CreateMap<ActivityInformation, ActivityInformationViewModel>().ReverseMap();
-                cfg.CreateMap<Activity, ActivityViewModel>().ReverseMap();
-                cfg.CreateMap<Address, AddressViewModel>().ReverseMap();
-                cfg.CreateMap<ChatInformation, ChatInformationViewModel>().ReverseMap();
-                cfg.CreateMap<Device, DeviceViewModel>().ReverseMap();
-                cfg.CreateMap<Feeback, FeebackViewModel>().ReverseMap();
-                cfg.CreateMap<Notification, NotificationViewModel>().ReverseMap();
-                cfg.CreateMap<Promotion, PromotionViewModel>().ReverseMap();
-                cfg.CreateMap<Rate, RateViewModel>().ReverseMap();
-                cfg.CreateMap<Review, ReviewViewModel>().ReverseMap();
-                cfg.CreateMap<Model.Service, ServiceViewModel>().ReverseMap();
+                cfg.CreateMap<ActivityGroup, ActivityGroupViewModel>().PreserveReferences();
+                cfg.CreateMap<ActivityInformation, ActivityInformationViewModel>().PreserveReferences();
+                cfg.CreateMap<Activity, ActivityViewModel>().PreserveReferences();
+                cfg.CreateMap<Promotion, PromotionViewModel>().PreserveReferences();
+                cfg.CreateMap<Model.Service, ServiceViewModel>().PreserveReferences();
+                cfg.CreateMap<Address, AddressViewModel>().PreserveReferences();
+                cfg.CreateMap<ChatInformation, ChatInformationViewModel>().PreserveReferences();
+                cfg.CreateMap<Device, DeviceViewModel>().PreserveReferences();
+                cfg.CreateMap<Feeback, FeebackViewModel>().PreserveReferences();
+                cfg.CreateMap<Notification, NotificationViewModel>().PreserveReferences();
+
+                cfg.CreateMap<Rate, RateViewModel>().PreserveReferences();
+                cfg.CreateMap<Review, ReviewViewModel>().PreserveReferences();
+
             });
         }
     }

@@ -134,17 +134,18 @@ namespace LikeSport.Web.Infrastructure.Extensions
             one.ActivityGroup_Id = two.ActivityGroup_Id;
 
         }
-        public static void UpdatePromotion(this Activity one, ActivityViewModel two)
+        public static void UpdatePromotion(this Promotion one, PromotionViewModel two)
         {
 
             one.Id = two.Id;
-            one.ActivityName = two.ActivityName;
-            one.State = two.State;
+            one.Amount = two.Amount;
+            one.Description = two.Description;
+            one.Percent = two.Percent;
             one.CreatedDate = two.CreatedDate;
             one.ModifiedDate = two.ModifiedDate;
             one.CreatedBy = two.CreatedBy;
             one.ModifiedBy = two.ModifiedBy;
-            one.ActivityGroup_Id = two.ActivityGroup_Id;
+            one.ActivityInformation_Id = two.ActivityInformation_Id;
 
         }
         public static void UpdateRate(this Activity one, ActivityViewModel two)

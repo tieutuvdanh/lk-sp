@@ -14,12 +14,13 @@ namespace LikeSport.Model
         public string Type { get; set; }
 
         [Required]
+        [StringLength(500)]
         public string Title { get; set; }
 
         [Required]
         public string Content { get; set; }
 
-        [Required]
+   
         public string Reply { get; set; }
 
         public DateTime CreatedDate { get; set; }
@@ -27,9 +28,10 @@ namespace LikeSport.Model
         public DateTime ModifiedDate { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        [StringLength(50)]
         public string ModifiedBy { get; set; }
 
         public int UserProfile_Id { get; set; }

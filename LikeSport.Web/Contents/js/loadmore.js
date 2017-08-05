@@ -85,7 +85,7 @@
     ------------------------------------------------------------*/
     $.fn[PluginName].default = {
         url: '',
-        limit: 50000,
+        limit: 3,
         loadItem: 3,
         loadBtn: '#btn',
         getData: function (elem, data) {

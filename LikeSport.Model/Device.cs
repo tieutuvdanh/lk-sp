@@ -13,15 +13,15 @@ namespace LikeSport.Model
         [Required]
         public string IP { get; set; }
 
-        [Required]
+        [StringLength(50)]
         public string BrowserType { get; set; }
 
-        [Required]
+        [StringLength(50)]
         public string OS { get; set; }
 
         public DateTime Time { get; set; }
 
-        [Required]
+        [StringLength(500)]
         public string Location { get; set; }
     }
 }

@@ -18,7 +18,8 @@ namespace LikeSport.Data.Respositories
     }
     public class ActivityInfomationRepository : RepositoryBase<ActivityInformation>, IActivityInformationRepository
     {
-        public ActivityInfomationRepository(IDbFactory dbFactory) : base(dbFactory)
+        public ActivityInfomationRepository(IDbFactory dbFactory) 
+            : base(dbFactory)
         {
         }
 
@@ -40,22 +41,7 @@ namespace LikeSport.Data.Respositories
         {
             return this.DbContext.ActivityInformations.Where(m => m.Activity_Id == id);
         }
-        public ActivityInformation Add(ActivityInformation entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ActivityInformation Delete(ActivityInformation entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ActivityInformation Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-
+     
 
        
     }

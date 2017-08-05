@@ -1,0 +1,223 @@
+﻿@model LikeSport.Web.Models.LoginRegisterViewModel
+@using LikeSport.Web.Models
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*<ul class="nav navbar-nav navbar-right">
+    <li>
+        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+</ul>*@
+<ul class="header-nav header-nav-options">
+
+    <li class="dropdown hidden-xs">
+        <a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+            <i class="fa fa-bell"></i><sup class="badge style-danger">4</sup>
+        </a>
+        <ul class="dropdown-menu animation-expand">
+            <li class="dropdown-header">Today's messages</li>
+            <li>
+                <a class="alert alert-callout alert-warning" href="javascript:void(0);">
+                    <img class="pull-right img-circle dropdown-avatar" src="/Contents/img/avatar/avatar04.png" alt="" />
+                    <strong>Alex Anistor</strong><br />
+                    <small>Testing functionality...</small>
+                </a>
+            </li>
+            <li>
+                <a class="alert alert-callout alert-info" href="javascript:void(0);">
+                    <img class="pull-right img-circle dropdown-avatar" src="/Contents/img/avatar/avatar2.png" alt="" />
+                    <strong>Alicia Adell</strong><br />
+                    <small>Reviewing last changes...</small>
+                </a>
+            </li>
+            <li class="dropdown-header">Options</li>
+            <li><a href="#">View all messages <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+            <li><a href="#">Mark as read <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+        </ul><!--end .dropdown-menu -->
+    </li><!--end .dropdown -->
+    <li class="dropdown hidden-xs">
+        <a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+            <i class="fa fa-area-chart"></i>
+        </a>
+        <ul class="dropdown-menu animation-expand">
+            <li class="dropdown-header">Server load</li>
+            <li class="dropdown-progress">
+                <a href="javascript:void(0);">
+                    <div class="dropdown-label">
+                        <span class="text-light">Server load <strong>Today</strong></span>
+                        <strong class="pull-right">93%</strong>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-danger" style="width: 93%"></div>
+                    </div>
+                </a>
+            </li><!--end .dropdown-progress -->
+            <li class="dropdown-progress">
+                <a href="javascript:void(0);">
+                    <div class="dropdown-label">
+                        <span class="text-light">Server load <strong>Yesterday</strong></span>
+                        <strong class="pull-right">30%</strong>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 30%"></div>
+                    </div>
+                </a>
+            </li><!--end .dropdown-progress -->
+            <li class="dropdown-progress">
+                <a href="javascript:void(0);">
+                    <div class="dropdown-label">
+                        <span class="text-light">Server load <strong>Lastweek</strong></span>
+                        <strong class="pull-right">74%</strong>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning" style="width: 74%"></div>
+                    </div>
+                </a>
+            </li><!--end .dropdown-progress -->
+        </ul><!--end .dropdown-menu -->
+    </li><!--end .dropdown -->
+</ul><!--end .header-nav-options -->
+<ul class="header-nav header-nav-profile">
+    <li class="dropdown">
+        <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+            <img src="/Contents/img/avatar/avatar.png" alt="" />
+            <span class="profile-info">
+                @User.Identity.GetUserName()
+                <small>Hà Nội</small>
+            </span>
+        </a>
+        <ul class="dropdown-menu animation-dock">
+            <li class="dropdown-header">Config</li>
+            <li><a href="#">My profile</a></li>
+            <li><a href="#">My blog <span class="badge style-danger pull-right">16</span></a></li>
+            <li><a href="#">My appointments</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="fa fa-fw fa-lock"></i> Lock</a></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+        </ul><!--end .dropdown-menu -->
+    </li><!--end .dropdown -->
+</ul><!--end .header-nav-profile -->
+<ul class="header-nav header-nav-toggle">
+    <li>
+        <a class="btn btn-icon-toggle btn-default" href="#offcanvas-search" data-toggle="offcanvas" data-backdrop="false">
+            <i class="fa fa-ellipsis-v"></i>
+        </a>
+    </li>
+</ul><!--end .header-nav-toggle -->
+    }
+}
+else
+{
+<ul class="header-nav header-nav-options header-nav-menu">
+
+    <li class="header-nav-brand">
+        <div class="brand-holder">
+            <a href="#">
+                <span class="text-bold font14">   Become a Host   </span>
+            </a>
+        </div>
+    </li>
+    <li>
+    <li class="header-nav-brand">
+        <div class="brand-holder">
+            <a href="#">
+                <span class="text-bold font14">   Help   </span>
+            </a>
+        </div>
+    </li>
+    <li>
+    <li class="header-nav-brand">
+        <div class="brand-holder">
+            <a href="#">
+                <span class="text-bold font14">   Register   </span>
+            </a>
+        </div>
+    </li>
+    <li>
+    <li class="header-nav-brand dropdown">
+        <div class="brand-holder">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="text-bold font14">   Log in   </span></a>
+            <ul id="login-dp" class="dropdown-menu">
+                <li>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            Login via
+
+                            <div class="social-buttons">
+                               
+                                @Html.Partial("_FaceBookLoginsListPartial", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
+
+                            </div>
+                            or
+                            @*@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form", id = "login-nav" }))
+                            {*@
+                            @using (Ajax.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, new AjaxOptions { HttpMethod = "Post", OnFailure = "PostFailure", OnSuccess = "PostSuccess" }, new { @class = "form", role = "form", id = "login-nav" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                @Html.TextBoxFor(m => m.LoginViewModel.Email, new { type = "email", @class = "form-control", id = "exampleInputEmail2", placeholder = "Email address", required = "required" })
+                                @Html.ValidationMessageFor(m => m.LoginViewModel.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                @Html.TextBoxFor(m => m.LoginViewModel.Password, new { type = "password", @class = "form-control", id = "exampleInputPassword2", placeholder = "Password", required = "required" })
+                                <div class="help-block text-right">
+                                    <a href="">Forget the password ?</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> keep me logged-in
+                                </label>
+                            </div>
+                            }
+                        </div>
+                        <div class="bottom text-center">
+                            New here ? <a href="#"><b>Join Us</b></a>
+                        </div>
+                    </div>
+
+
+                </li>
+            </ul>
+
+        </div>
+    </li>
+
+</ul>
+
+
+}
+<script type="text/javascript">
+    //$(function () {
+    //    $('#login-nav').submit(function () {
+
+    //        if ($(this).valid()) {
+    //            $.ajax({
+    //                url: this.action,
+    //                type: this.method,
+    //                data: $(this).serialize(),
+    //                success: function (result) {
+    //                    alert(result)
+    //                },
+    //                error:function(result) {
+    //                    alert(result)
+    //                }
+    //            });
+    //        }
+    //        return false;
+    //    });
+    //});
+
+</script>

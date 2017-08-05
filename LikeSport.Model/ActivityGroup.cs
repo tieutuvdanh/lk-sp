@@ -17,10 +17,11 @@ namespace LikeSport.Model
         public int Id { get; set; }
 
         [Required]
-        
+        [StringLength(50)]
         public string ActivityGroupName { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string State { get; set; }
 
         public DateTime CreatedDate { get; set; }
@@ -28,9 +29,10 @@ namespace LikeSport.Model
         public DateTime ModifiedDate { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        [StringLength(50)]
         public string ModifiedBy { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

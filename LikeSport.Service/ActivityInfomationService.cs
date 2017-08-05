@@ -36,11 +36,12 @@ namespace LikeSport.Service
         }
         public IEnumerable<ActivityInformation> GetAll()
         {
-            return _repository.GetAll();
+            return _repository.GetAll(new string[] { "Promotions" });
         }
 
         public IEnumerable<ActivityInformation> GetAllByActivityId(int id)
         {
+            //return _repository.GetMulti(x => x.Activity_Id == id, new string[] { "Promotions" });
             return _repository.GetAllByActivityId(id);
         }
 
@@ -51,7 +52,7 @@ namespace LikeSport.Service
 
         public IEnumerable<ActivityInformation> GetAllByActivityGroupId(int id)
         {
-            return _repository.GetAllByActivityGroupId(id);
+            return _repository.GetMulti(x => x.Activity.ActivityGroup_Id == id, new string[] { "Promotions" });
         }
 
         public ActivityInformation Add(ActivityInformation model)

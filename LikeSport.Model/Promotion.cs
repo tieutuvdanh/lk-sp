@@ -15,6 +15,7 @@ namespace LikeSport.Model
         public int Percent { get; set; }
 
         [Required]
+        [StringLength(500)]
         public string Description { get; set; }
 
         public DateTime CreatedDate { get; set; }
@@ -22,9 +23,10 @@ namespace LikeSport.Model
         public DateTime ModifiedDate { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        [StringLength(50)]
         public string ModifiedBy { get; set; }
 
         public int ActivityInformation_Id { get; set; }

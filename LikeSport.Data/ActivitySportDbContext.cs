@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using LikeSport.Model;
-
+using Microsoft.AspNet.Identity.EntityFramework;
 namespace LikeSport.Data
 {
-   public class ActivitySportDbContext: DbContext
+    public class ActivitySportDbContext : IdentityDbContext<ApplicationUser>
     {
         public ActivitySportDbContext() : base("name=ActivitySport")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
+        public static ActivitySportDbContext Create()
+        {
+            return new ActivitySportDbContext();
+        }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>()
@@ -88,7 +88,12 @@ namespace LikeSport.Data
                 .WithRequired(e => e.Service)
                 .HasForeignKey(e => e.Service_Id)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
+
+
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Activity> Activities { get; set; }
         public virtual DbSet<ActivityGroup> ActivityGroups { get; set; }

@@ -26,7 +26,8 @@ namespace LikeSport.Model
         [Required]
         public string Country { get; set; }
 
-        [Required]
+
+    
         public string MapInfor { get; set; }
 
         public DateTime CreatedDate { get; set; }
@@ -36,7 +37,7 @@ namespace LikeSport.Model
         [Required]
         public string CreatedBy { get; set; }
 
-        [Required]
+    
         public string ModifiedBy { get; set; }
 
         public int UserProfile_Id { get; set; }

@@ -38,6 +38,12 @@ namespace LikeSport.Web
             url: "Tim-kiem/{text}",
             defaults: new { controller = "Home", action = "Search", text = UrlParameter.Optional }
             );
+            // Chi tiết tin bài
+            routes.MapRoute(
+            name: "Detail activity infomation",
+            url: "Detail/{text}-{id}",
+            defaults: new { controller = "Home", action = "DetailProduct", text = UrlParameter.Optional }
+            );
             // Đăng nhập
             routes.MapRoute(
             name: "Loggin",

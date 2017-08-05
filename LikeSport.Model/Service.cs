@@ -17,6 +17,7 @@ namespace LikeSport.Model
         public int Id { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string NameType { get; set; }
 
         [Required]
@@ -27,9 +28,10 @@ namespace LikeSport.Model
         public DateTime ModifiedDate { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        [StringLength(50)]
         public string ModifiedBy { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

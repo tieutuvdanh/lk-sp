@@ -23,7 +23,12 @@ a {
     left: 0;
     height: 50px!important;
 }
-
+.header-nav-menu {
+        margin-right: 24px;
+}
+.font14 {
+    font-size: 14px;
+}
 section {
     top: 35px;
     padding: 0 !important;
@@ -113,7 +118,7 @@ section {
 
 .mitem {
     border-radius: 5px;
-    width: 203px;
+    width: 200px;
     min-height: 305px;
 }
 
@@ -124,7 +129,7 @@ section {
 .image {
     position: relative;
     display: block;
-    width: 203px;
+    width: 200px;
     height: 305px;
     overflow: hidden;
     border-top-left-radius: 5px;
@@ -142,13 +147,13 @@ section {
 .item-content {
     padding: 4px 12px 6px;
     position: relative;
-    width: 185px;
+    width: 200px;
 }
 
 .item-activity {
     padding: 2px 4px 12px 6px;
     border-top: 1px solid #e4e4e4;
-    width: 185px;
+    width: 200px;
 }
 
 .item-name h4 {
@@ -734,4 +739,58 @@ body {
 	-moz-transform:scale(.3);
 		background-color:rgb(255,255,255);
 	}
+}
+
+/*//login css*/
+    #login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+    margin-top: 26px;
+
+}
+#login-dp .help-block{
+    font-size:12px    
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+.btn-fb:hover{
+    color: #fff;
+    background-color:#496ebc 
+}
+.btn-tw{
+    color: #fff;
+    background-color:#55acee;
+}
+.btn-tw:hover{
+    color: #fff;
+    background-color:#59b5fa;
+}
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
 }

@@ -11,9 +11,11 @@ namespace LikeSport.Model
         public int Id { get; set; }
 
         [Required]
+
         public string Comments { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string Account { get; set; }
 
         public DateTime CreatedDate { get; set; }
@@ -21,9 +23,10 @@ namespace LikeSport.Model
         public DateTime ModifiedDate { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        [StringLength(50)]
         public string ModifiedBy { get; set; }
 
         public int ActivityInformation_Id { get; set; }

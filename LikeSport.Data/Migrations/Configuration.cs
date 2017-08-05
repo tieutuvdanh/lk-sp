@@ -1,3 +1,7 @@
+using LikeSport.Model;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace LikeSport.Data.Migrations
 {
     using System;
@@ -26,6 +30,29 @@ namespace LikeSport.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ActivitySportDbContext()));
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ActivitySportDbContext()));
+            var user = new ApplicationUser()
+            {
+                UserName = "dovantu",
+                Email = "tieutuvdanh@gmail.com",
+                EmailConfirmed = true,
+            
+
+            };
+
+            manager.Create(user, "123654$");
+
+            if (!roleManager.Roles.Any())
+            {
+                roleManager.Create(new IdentityRole { Name = "Admin" });
+                roleManager.Create(new IdentityRole { Name = "User" });
+            }
+
+            var adminUser = manager.FindByEmail("tieutuvdanh@gmail.com");
+
+            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
         }
     }
 }

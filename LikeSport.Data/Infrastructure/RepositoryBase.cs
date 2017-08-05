@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LikeSport.Data.Infrastructure
 {
     // abstract class to initial DBContext & Implement action CRUD of IRespository.
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
         private ActivitySportDbContext dataContext;
         private readonly IDbSet<T> dbSet;
@@ -33,25 +33,24 @@ namespace LikeSport.Data.Infrastructure
         }
 
         #region Implementation
-        public virtual void Add(T entity)
+        public virtual T Add(T entity)
         {
-            dbSet.Add(entity);
+           return dbSet.Add(entity);
         }
-
         public virtual void Update(T entity)
         {
             dbSet.Attach(entity);
             dataContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public virtual void Delete(T entity)
+        public virtual T Delete(T entity)
         {
-            dbSet.Remove(entity);
+           return dbSet.Remove(entity);
         }
-        public virtual void Delete(int id)
+        public virtual T Delete(int id)
         {
             var entity = dbSet.Find(id);
-            dbSet.Remove(entity);
+          return  dbSet.Remove(entity);
         }
         public virtual void DeleteMulti(Expression<Func<T, bool>> where)
         {
@@ -90,6 +89,11 @@ namespace LikeSport.Data.Infrastructure
             return dataContext.Set<T>().AsQueryable();
         }
 
+        public IQueryable<T> GetById(int id, string[] includes = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null)
         {
             return GetAll(includes).FirstOrDefault(expression);
@@ -98,15 +102,11 @@ namespace LikeSport.Data.Infrastructure
         public virtual IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null)
         {
             //HANDLE INCLUDES FOR ASSOCIATED OBJECTS IF APPLICABLE
-            if (includes != null && includes.Count() > 0)
-            {
-                var query = dataContext.Set<T>().Include(includes.First());
-                foreach (var include in includes.Skip(1))
-                    query = query.Include(include);
-                return query.Where<T>(predicate).AsQueryable<T>();
-            }
-
-            return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
+            if (includes == null || !includes.Any())
+                return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
+            var query = dataContext.Set<T>().Include(includes.First());
+            query = includes.Skip(1).Aggregate(query, (current, include) => current.Include(include));
+            return query.Where<T>(predicate).AsQueryable<T>();
         }
 
         public virtual IQueryable<T> GetMultiPaging(Expression<Func<T, bool>> predicate, out int total, int index = 0, int size = 20, string[] includes = null)

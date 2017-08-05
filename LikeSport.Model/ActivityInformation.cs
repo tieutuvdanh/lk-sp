@@ -21,26 +21,30 @@ namespace LikeSport.Model
 
         [Required]
         public string Title { get; set; }
-
+        [StringLength(1000)]
         public string Image { get; set; }
 
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }
 
-        [Required]
+   
         public string TagName { get; set; }
 
         [Required]
+        [StringLength(1000)]
         public string WhatWeDo { get; set; }
 
         [Required]
+        [StringLength(1000)]
         public string Views { get; set; }
 
         [Required]
+        [StringLength(500)]
         public string Description { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string Status { get; set; }
 
         public DateTime CreatedDate { get; set; }
@@ -48,9 +52,11 @@ namespace LikeSport.Model
         public DateTime ModifiedDate { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string CreatedBy { get; set; }
 
-        [Required]
+    
+        [StringLength(50)]
         public string ModifiedBy { get; set; }
 
         public int Activity_Id { get; set; }

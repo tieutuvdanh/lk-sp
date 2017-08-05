@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -21,6 +22,18 @@ namespace LikeSport.Web.Api
             _activityGroupService = activityGroupService;
 
         }
+        [Route("getnameall")]
+        public HttpResponseMessage GetNameAll(HttpRequestMessage request)
+        {
+            var listActivityGroup = _activityGroupService.GetNameAll();
+
+
+            var listActivityGroupVm = Mapper.Map<List<ActivityGroupViewModel>>(listActivityGroup);
+
+            var response = request.CreateResponse(HttpStatusCode.OK, listActivityGroupVm);
+
+            return response;
+        }
 
         [Route("getall")]
         public HttpResponseMessage Get(HttpRequestMessage request)
@@ -34,8 +47,31 @@ namespace LikeSport.Web.Api
 
             return response;
         }
-      
 
+        [Route("getallbymulti")]
+        public HttpResponseMessage GetByMutil(HttpRequestMessage request, string id)
+        {
+            if (!String.IsNullOrEmpty(id))
+            {
+                var listId = new List<int>(Array.ConvertAll(id.Split(','), int.Parse));
+                var list = _activityGroupService.GetAllByMulti(listId);
+                var listVm = Mapper.Map<List<ActivityGroupViewModel>>(list);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, listVm);
+                return response;
+            }
+
+            else
+            {
+                var list = _activityGroupService.GetAllActivityGroups();
+
+                var listVm = Mapper.Map<List<ActivityGroupViewModel>>(list);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, listVm);
+                return response;
+            }
+
+        }
         [Route("add")]
         public HttpResponseMessage Post(HttpRequestMessage request, ActivityGroupViewModel mActivityGroup)
         {

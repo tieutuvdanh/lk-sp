@@ -22,66 +22,72 @@ namespace LikeSport.Model
         public int Id { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string FirstName { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string LastName { get; set; }
 
         [Required]
+        [StringLength(10)]
         public string Gender { get; set; }
 
         public DateTime BirthOfDate { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string EmailAddress { get; set; }
 
-        [Required]
+     
         public string Hobby { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string PhoneNumber { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string LoginType { get; set; }
 
-        [Required]
+        [StringLength(1000)]
         public string Photo { get; set; }
 
-        [Required]
+        [StringLength(100)]
         public string FacebookId { get; set; }
 
-        [Required]
+        [StringLength(100)]
         public string TwitterId { get; set; }
 
-        [Required]
+        [StringLength(100)]
         public string GoogleId { get; set; }
 
-        [Required]
+        [StringLength(100)]
         public string TypeAccount { get; set; }
 
-        [Required]
+        [StringLength(100)]
         public string BusinessName { get; set; }
 
-        [Required]
+        [StringLength(100)]
         public string ContactName { get; set; }
 
-        [Required]
+        [StringLength(50)]
         public string PhoneNumberOrganization { get; set; }
 
-        [Required]
+        [StringLength(1000)]
         public string PhotoOrganization { get; set; }
 
-        [Required]
+        [StringLength(500)]
         public string Description { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
         public DateTime ModifiedDate { get; set; }
 
-        [Required]
+     
         public string CreatedBy { get; set; }
 
-        [Required]
+  
         public string ModifiedBy { get; set; }
 
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
