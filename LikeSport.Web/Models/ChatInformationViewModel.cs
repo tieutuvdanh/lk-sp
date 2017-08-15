@@ -17,8 +17,8 @@ namespace LikeSport.Web.Models
       
         public string CreatedBy { get; set; }
 
-        public int Account_Id { get; set; }
+        public string Account_Id { get; set; }
 
-        public virtual AccountViewModel Account { get; set; }
+        public virtual ApplicationUserViewModel Account { get; set; }
     }
 }

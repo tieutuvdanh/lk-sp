@@ -58,7 +58,7 @@
     var height = box.height
 
     el = el.parentNode
-
+  
     do {
       box = el.getBoundingClientRect()
 
@@ -86,6 +86,7 @@
       var img = new Image()
 
       img.onload = function () {
+       
         el.classList.remove('progressive--not-loaded')
         el.classList.add('progressive--is-loaded')
 
@@ -156,6 +157,7 @@
     onLoad = defaults.onLoad || onLoad
 
     inodes = [].slice.call(document.querySelectorAll('.progressive__img, .progressive__bg'))
+  
     sminodes = []
 
     progressively.render()
@@ -217,7 +219,8 @@
  * Drops progressively-listeners
  */
   progressively.drop = function () {
-    if (document.removeEventListener) {
+      if (document.removeEventListener) {
+          
       root.removeEventListener('scroll', listen)
       root.removeEventListener('resize', listen)
     } else {

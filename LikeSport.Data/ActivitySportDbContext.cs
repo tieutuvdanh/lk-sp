@@ -17,31 +17,31 @@ namespace LikeSport.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<ApplicationUser>()
                  .HasMany(e => e.ChatInformations)
                  .WithRequired(e => e.Account)
                  .HasForeignKey(e => e.Account_Id)
                  .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<ApplicationUser>()
                 .HasMany(e => e.ActivityInformations)
                 .WithRequired(e => e.Account)
                 .HasForeignKey(e => e.UserProfile_Id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<ApplicationUser>()
                 .HasMany(e => e.Addresses)
                 .WithRequired(e => e.Account)
                 .HasForeignKey(e => e.UserProfile_Id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<ApplicationUser>()
                 .HasMany(e => e.Feebacks)
                 .WithRequired(e => e.Account)
                 .HasForeignKey(e => e.UserProfile_Id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<ApplicationUser>()
                 .HasMany(e => e.Notifications)
                 .WithRequired(e => e.Account)
                 .HasForeignKey(e => e.UserProfile_Id)

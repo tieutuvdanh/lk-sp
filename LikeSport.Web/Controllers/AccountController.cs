@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Facebook;
 using LikeSport.Model;
 using LikeSport.Web.App_Start;
 using LikeSport.Web.Models;
@@ -337,8 +338,49 @@ namespace LikeSport.Web.Controllers
             string profilePicturePath = string.Format("http://graph.facebook.com/{0}/picture?type=large", facebookUserID);
             return profilePicturePath;
         }
-      
-       
+
+        //[ChildActionOnly]
+        //public  ActionResult FacebookFriends()
+        //public async Task<ActionResult> FacebookFriends()
+        //{
+        //    var userFriends = new List<FacebookFriendsViewModel>();
+        //    var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+        //    if (info != null)
+        //    {
+        //        if (User.Identity.IsAuthenticated)
+        //        {
+        //            var identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
+        //            var accessToken = identity.FindFirstValue("FacebookAccessToken");
+        //            //    var access_token = Session["AccessToken"].ToString();
+        //            var fb = new FacebookClient(accessToken);
+        //            dynamic fbFriends = fb.Get("/me/friends");
+
+        //            foreach (var friendItem in fbFriends.data)
+        //            {
+        //                userFriends.Add(new FacebookFriendsViewModel()
+        //                {
+        //                    Name = friendItem.name,
+        //                    Id = friendItem.id,
+        //                    ImageUrl = String.Format("https://graph.facebook.com/{0}/picture?type=small", friendItem.id)
+
+        //                });
+        //            }
+        //            //}
+        //        }
+        //    }
+        //    return View(userFriends);
+        //}
+        //[FacebookAuthorize("friends_birthday")]
+        //public async Task<ActionResult> Search(string friendName, FacebookContext context)
+        //{
+        //    var userFriends = await context.Client.GetCurrentUserFriendsAsync<MyAppUserFriendSimple>();
+        //    var friendsFound = String.IsNullOrEmpty(friendName) ?
+        //        userFriends.ToList() :
+        //        userFriends.Where(f => f.Name.ToLowerInvariant().Contains(friendName.ToLowerInvariant())).ToList();
+        //    friendsFound.ForEach(f => f.Birthday = !String.IsNullOrEmpty(f.Birthday) ? DateTime.Parse(f.Birthday).ToString("MMMM d") : "");
+        //    return View(friendsFound);
+        //}
+
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
@@ -393,15 +435,12 @@ namespace LikeSport.Web.Controllers
                             firstName = myInfo.first_name;
                             lastName = myInfo.last_name;
                             birthday = myInfo.birthday;
-                            location = myInfo.hometown;
+                            location = myInfo.hometown.name;
 
 
                         }
-                        //var name = loginInfo.ExternalIdentity.Claims.First(c => c.Type == "urn:facebook:name").Value;
-                        //var gender = loginInfo.ExternalIdentity.Claims.First(c => c.Type == ClaimTypes.Gender).Value;
-                        //var firstName= loginInfo.ExternalIdentity.Claims.First(c => c.Type == ClaimTypes.GivenName).Value;
-                        //var lastName = loginInfo.ExternalIdentity.Claims.First(c => c.Type == ClaimTypes.Surname).Value;
-                        var user = new ApplicationUser {Location = location, BirthDay = DateTime.Parse(birthday),FisrtName = firstName,LastName = lastName, Gender = gender, UserName = loginInfo.Email, Email = loginInfo.Email,Image  = GetFacebookProfilePicture (loginInfo.ExternalIdentity) };
+                        //var user = new ApplicationUser {  UserName = loginInfo.Email, Email = loginInfo.Email};
+                        var user = new ApplicationUser { Location = location, BirthDay = DateTime.Parse(birthday), FisrtName = firstName, LastName = lastName, Gender = gender, UserName = loginInfo.Email, Email = loginInfo.Email, Image = GetFacebookProfilePicture(loginInfo.ExternalIdentity) };
                         var result2 = await UserManager.CreateAsync(user);
                         if (result2.Succeeded)
                         {

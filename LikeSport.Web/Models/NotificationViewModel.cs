@@ -37,8 +37,8 @@ namespace LikeSport.Web.Models
       
         public string ModifiedBy { get; set; }
 
-        public int UserProfile_Id { get; set; }
+        public string UserProfile_Id { get; set; }
 
-        public virtual AccountViewModel Account { get; set; }
+        public virtual ApplicationUserViewModel Account { get; set; }
     }
 }

@@ -63,10 +63,11 @@ namespace LikeSport.Model
 
         public int Service_Id { get; set; }
 
-        public int UserProfile_Id { get; set; }
+        //public int UserProfile_Id { get; set; }
+        public string UserProfile_Id { get; set; }
 
-        public virtual Account Account { get; set; }
-
+        public virtual ApplicationUser Account { get; set; }
+        //public virtual Account Account { get; set; }
         public virtual Activity Activity { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

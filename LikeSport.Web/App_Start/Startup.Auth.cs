@@ -59,8 +59,8 @@ namespace LikeSport.Web.App_Start
             //   consumerSecret: "");
             var options = new FacebookAuthenticationOptions
             {
-                AppId = "229495737575345",
-                AppSecret = "6ceb700194d0f2c64d64d69bb75fa2bf",
+                AppId = "1755336414764240",
+                AppSecret = "57daaf54ae82a031993bdeb4d4e6cc86",
 
                 //AuthenticationType = "Facebook",
                 //SignInAsAuthenticationType = "ExternalCookie",

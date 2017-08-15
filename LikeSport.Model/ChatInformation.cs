@@ -18,8 +18,8 @@ namespace LikeSport.Model
         [Required]
         public string CreatedBy { get; set; }
 
-        public int Account_Id { get; set; }
-
-        public virtual Account Account { get; set; }
+        public string Account_Id { get; set; }
+        //public int Account_Id { get; set; }
+        public virtual ApplicationUser Account { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LikeSport.Data.Infrastructure;
 using LikeSport.Data.Respositories;
 using LikeSport.Model;
+using LikeSport.Common;
 
 namespace LikeSport.Service
 {
@@ -15,6 +16,7 @@ namespace LikeSport.Service
         IEnumerable<ActivityInformation> GetAllByActivityId(int id);
         IEnumerable<ActivityInformation> GetAllByMultiActivityId(List<int> listId );
         IEnumerable<ActivityInformation> GetAllByActivityGroupId(int id);
+        IEnumerable<ActivityInformation> GetAllBySearch(String txt);
         ActivityInformation Add(ActivityInformation model);
         ActivityInformation GetById(int id);
         void Update(ActivityInformation model);
@@ -53,6 +55,11 @@ namespace LikeSport.Service
         public IEnumerable<ActivityInformation> GetAllByActivityGroupId(int id)
         {
             return _repository.GetMulti(x => x.Activity.ActivityGroup_Id == id, new string[] { "Promotions" });
+        }
+
+        public IEnumerable<ActivityInformation> GetAllBySearch(string txt)
+        {
+            return _repository.GetMulti(x => x.Title.ToLower().Contains(txt.ToLower()), new string[] { "Promotions" });
         }
 
         public ActivityInformation Add(ActivityInformation model)

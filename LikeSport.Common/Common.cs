@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -57,6 +58,10 @@ namespace LikeSport.Common
             }
             return Regex.Replace(str.Trim().ToLower(), @"[^0-9a-zA-Z]+", "-"); ; ;
 
+        }
+        public static string GetByKey(string key)
+        {
+            return ConfigurationManager.AppSettings[key].ToString();
         }
     }
 }

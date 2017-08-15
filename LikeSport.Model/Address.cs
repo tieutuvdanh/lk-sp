@@ -40,11 +40,12 @@ namespace LikeSport.Model
     
         public string ModifiedBy { get; set; }
 
-        public int UserProfile_Id { get; set; }
+        public string UserProfile_Id { get; set; }
+       // public string UserProfile_Id { get; set; }
 
         public int ActivityInformations_Id { get; set; }
 
-        public virtual Account Account { get; set; }
+        public virtual ApplicationUser Account { get; set; }
 
         public virtual ActivityInformation ActivityInformation { get; set; }
     }

@@ -43,9 +43,9 @@ namespace LikeSport.Web.Models
 
         public int Service_Id { get; set; }
 
-        public int UserProfile_Id { get; set; }
+        public string UserProfile_Id { get; set; }
 
-        public virtual AccountViewModel Account { get; set; }
+        public virtual ApplicationUserViewModel Account { get; set; }
 
         public virtual ActivityViewModel Activity { get; set; }
 

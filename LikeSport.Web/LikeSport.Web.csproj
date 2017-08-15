@@ -149,6 +149,14 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -261,8 +269,12 @@
     <Compile Include="Models\ActivityInformationViewModel.cs" />
     <Compile Include="Models\ActivityViewModel.cs" />
     <Compile Include="Models\AddressViewModel.cs" />
+    <Compile Include="Models\ApplicationGroupViewModel.cs" />
+    <Compile Include="Models\ApplicationRoleViewModel.cs" />
+    <Compile Include="Models\ApplicationUserViewModel.cs" />
     <Compile Include="Models\ChatInformationViewModel.cs" />
     <Compile Include="Models\DeviceViewModel.cs" />
+    <Compile Include="Models\FacebookFriendsViewModel.cs" />
     <Compile Include="Models\FeebackViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NotificationViewModel.cs" />
@@ -273,6 +285,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contents\css\bootstrap-select.css" />
+    <Content Include="Contents\css\bootstrap-select.min.css" />
     <Content Include="Contents\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Contents\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Contents\css\fonts\LICENSE.txt" />
@@ -685,6 +699,8 @@
     <Content Include="Contents\img\product\359b027b-210d-4a8c-8a18-fd17552cd632.jpg" />
     <Content Include="Contents\img\product\3a642333-8236-48c4-9a92-966c9bed6aa0.jpg" />
     <Content Include="Contents\img\product\752866be-801e-4f51-bb31-023477285660.jpg" />
+    <Content Include="Contents\js\bootstrap-select.js" />
+    <Content Include="Contents\js\bootstrap-select.min.js" />
     <Content Include="Contents\js\core\demo\Demo.js" />
     <Content Include="Contents\js\core\demo\DemoCalendar.js" />
     <Content Include="Contents\js\core\demo\DemoCharts.js" />
@@ -1756,6 +1772,7 @@
     <Content Include="Contents\progressively\progressively.js" />
     <Content Include="Contents\progressively\progressively.min.css" />
     <Content Include="Contents\progressively\progressively.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2072,6 +2089,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_FaceBookLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
