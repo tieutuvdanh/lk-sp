@@ -85,7 +85,7 @@ namespace LikeSport.Web.App_Start
                 //    }
                 //}
             };
-            options.UserInformationEndpoint = "https://graph.facebook.com/v2.4/me?fields=id,name,email,first_name,last_name";
+            //options.UserInformationEndpoint = "https://graph.facebook.com/v2.4/me?fields=id,name,email,first_name,last_name";
             options.Provider = new FacebookAuthenticationProvider
             {
                 OnAuthenticated = async context =>
@@ -113,12 +113,12 @@ namespace LikeSport.Web.App_Start
             //options.Fields.Add("user_photos");
             options.Scope.Add("public_profile");
             options.Scope.Add("user_birthday");
-            options.Scope.Add("user_about_me");
-            options.Scope.Add("user_friends");
+            //options.Scope.Add("user_about_me");
+            //options.Scope.Add("user_friends");
             //options.Scope.Add("read_stream");
-            options.Scope.Add("user_location");
+            //options.Scope.Add("user_location");
             options.Scope.Add("user_photos");
-            options.Scope.Add("user_hometown");
+            //options.Scope.Add("user_hometown");
             options.Scope.Add("user_website");
             options.Scope.Add("email");
 
@@ -127,11 +127,12 @@ namespace LikeSport.Web.App_Start
             options.Fields.Add("name");
 
 
-            options.SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie;
-            app.UseFacebookAuthentication(options
-                //appId: "229495737575345",
-                //appSecret: "6ceb700194d0f2c64d64d69bb75fa2bf"
-               
+            //options.SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie;
+            app.UseFacebookAuthentication(
+                //options
+                appId: "1755336414764240",
+                appSecret: "57daaf54ae82a031993bdeb4d4e6cc86"
+
                 //new FacebookAuthenticationOptions
                 //{
                 //    AppId = "229495737575345",

@@ -386,10 +386,10 @@ namespace LikeSport.Web.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
         
 
@@ -408,6 +408,7 @@ namespace LikeSport.Web.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+
                     //return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
                     if (ModelState.IsValid)
                     {
@@ -456,6 +457,58 @@ namespace LikeSport.Web.Controllers
 
                     ViewBag.ReturnUrl = returnUrl;
                     return RedirectToAction("Index", "Home");
+
+                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    //if (ModelState.IsValid)
+                    //{
+                    //    // Get the information about the user from the external login provider
+                    //    var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+                    //    if (info == null)
+                    //    {
+                    //        //return View("ExternalLoginFailure");
+                    //        return RedirectToAction("Index", "Home");
+                    //    }
+                    //    var name = "";
+                    //    var gender = "";
+                    //    var firstName = "";
+                    //    var lastName = "";
+                    //    var birthday = "";
+                    //    var location = "";
+                    //    if (loginInfo.Login.LoginProvider == "Facebook")
+                    //    {
+                    //        var identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
+                    //        var accessToken = identity.FindFirstValue("FacebookAccessToken");
+                    //        var fb = new Facebook.FacebookClient(accessToken);
+                    //        dynamic myInfo = fb.Get("/me?fields=email,first_name,last_name,gender,birthday,hometown");
+                    //        loginInfo.Email = myInfo.email;
+                    //        gender = myInfo.gender;
+                    //        firstName = myInfo.first_name;
+                    //        lastName = myInfo.last_name;
+                    //        birthday = myInfo.birthday;
+                    //        location = myInfo.hometown.name;
+
+
+                    //    }
+                    //    //var name = loginInfo.ExternalIdentity.Claims.First(c => c.Type == "urn:facebook:name").Value;
+                    //    //var gender = loginInfo.ExternalIdentity.Claims.First(c => c.Type == ClaimTypes.Gender).Value;
+                    //    //var firstName= loginInfo.ExternalIdentity.Claims.First(c => c.Type == ClaimTypes.GivenName).Value;
+                    //    //var lastName = loginInfo.ExternalIdentity.Claims.First(c => c.Type == ClaimTypes.Surname).Value;
+                    //    var user = new ApplicationUser {Location = location, BirthDay = DateTime.Parse(birthday),FisrtName = firstName,LastName = lastName, Gender = gender, UserName = loginInfo.Email, Email = loginInfo.Email,Image  = GetFacebookProfilePicture (loginInfo.ExternalIdentity) };
+                    //    var result2 = await UserManager.CreateAsync(user);
+                    //    if (result2.Succeeded)
+                    //    {
+                    //        result2 = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    //        if (result2.Succeeded)
+                    //        {
+                    //            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    //            return RedirectToLocal(returnUrl);
+                    //        }
+                    //    }
+                    //    AddErrors(result2);
+                    //}
+
+                    //ViewBag.ReturnUrl = returnUrl;
+                    //return RedirectToAction("Index", "Home");
 
             }
         }
