@@ -1,5 +1,9 @@
-﻿@model IEnumerable<LikeSport.Web.Models.ServiceViewModel>
-@*@model Tuple<IEnumerable<LikeSport.Web.Models.ServiceViewModel>, LikeSport.Web.Models.LoginRegisterViewModel>*@
+﻿@using LikeSport.Web.Models
+@model IEnumerable<LikeSport.Web.Models.ServiceViewModel>
+
+@{
+    var listService = (List<ServiceViewModel>)ViewBag.listService;
+}
 <link href="~/Contents/css/bootstrap-select.css" rel="stylesheet" />
 <header id="header" style="top: 0;">
     <div class="headerbar">
@@ -19,20 +23,20 @@
                     {
 
                         <div class="input-group">
-                            <input type="text" class="form-control" name="searchText" placeholder="Enter your keyword">
+                            <input type="text" class="form-control" id="headSearchText" name="searchText" placeholder="Enter your keyword">
                             <div class="input-group-btn">
                                 <input type="hidden" id="service" name="service" value=""/>
                                 <script>
                                     $("form").submit(function() {
-                                        $("#service").val($('#spService').text());
+                                        $("#service").val($('#ss').val());
                                     })
                                 </script>
-                                <select title="Services" class="selectpicker" multiple="" data-hide-disabled="true" data-size="5" tabindex="-98">
-                                    <option>Hide</option>
-                                    <option>Expericance</option>
-                                    <option>Sell</option>
-                                    <option>Learn</option>
+                                <select title="Services" id="ss" class="selectpicker" multiple="" data-hide-disabled="true" data-size="5" tabindex="-98">
 
+                                    @foreach (var item in listService)
+                                    {
+                                        <option value="@item.Id">@item.NameType</option>
+                                    }
                                 </select>
 
                             </div>

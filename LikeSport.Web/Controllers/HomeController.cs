@@ -81,12 +81,14 @@ namespace LikeSport.Web.Controllers
         {
             return View();
         }
-        public ActionResult Search(string sortOrder, string currentFilter, string searchText, string service, int? page)
+        public ActionResult Search(string sortOrder, string currentFilter, string searchText, string service, int? page,int?minPrice,int?maxPrice,string activities)
         {
             var listService = _service.GetAllService();
             var listAct = _activityGroupService.GetAllActivityGroups();
 
             ViewBag.CurrentSort = sortOrder;
+            ViewBag.minPrice = minPrice;
+            ViewBag.maxPrice = maxPrice;
             ViewBag.listService = Mapper.Map<List<ServiceViewModel>>(listService); ;
             ViewBag.listActGroup = Mapper.Map<List<ActivityGroupViewModel>>(listAct); ;
 
@@ -100,20 +102,77 @@ namespace LikeSport.Web.Controllers
             }
 
             ViewBag.CurrentFilter = searchText;
-
-            var listActivity = _activityInfomationService.GetAllBySearch(searchText);
-            var list = Mapper.Map<List<ActivityInformationViewModel>>(listActivity);
+            ViewBag.service = service;
+            ViewBag.activities = activities;
+            if (!string.IsNullOrEmpty(activities))
+            {
+                
+            }
            
+            List<int> arr = new List<int>();
+
+         
+            if (!string.IsNullOrEmpty(service) && service!= "SERVICES")
+            {
+
+                arr = service.Split(',').Select(Int32.Parse).ToList();
+
+            }
+            if (arr.Count > 0)
+            {
+                var listActivity =
+                    _activityInfomationService.GetAllBySearch(searchText)
+                        .Where(m => arr.Contains(m.Service_Id))
+                        .ToList()
+                    ;
+                var list = Mapper.Map<List<ActivityInformationViewModel>>(listActivity);
+
+                if (minPrice != null && maxPrice != null)
+                {
+                    list =list.Where(m =>
+                    {
+                        var promotionViewModel = m.Promotions.FirstOrDefault();
+                        return promotionViewModel != null && (promotionViewModel.Percent >= minPrice &&
+                                                                         promotionViewModel.Percent <= maxPrice);
+                    }).ToList();
+
+                }
 
 
-            int pageSize = int.Parse(Common.Common.GetByKey("PageSize"));
-            int pageNumber = (page ?? 1);
+                int pageSize = int.Parse(Common.Common.GetByKey("PageSize"));
+                int pageNumber = (page ?? 1);
 
-            return View(list.ToPagedList(pageNumber, pageSize));
+                return View(list.ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                var listActivity = _activityInfomationService.GetAllBySearch(searchText);
+                var list = Mapper.Map<List<ActivityInformationViewModel>>(listActivity);
+                list =
+                    list.Where(
+                        m =>
+                        {
+                            var promotionViewModel = m.Promotions.LastOrDefault();
+                            return promotionViewModel != null && (promotionViewModel.Percent >= minPrice &&
+                                                                  promotionViewModel.Percent <= maxPrice);
+                        }).ToList();
+
+
+                int pageSize = int.Parse(Common.Common.GetByKey("PageSize"));
+                int pageNumber = (page ?? 1);
+
+                return View(list.ToPagedList(pageNumber, pageSize));
+            }
+
+
         }
         [ChildActionOnly]
         public ActionResult Header()
         {
+            var listService = _service.GetAllService();
+
+          
+            ViewBag.listService = Mapper.Map<List<ServiceViewModel>>(listService); ;
             using (var client = new HttpClient())
             {
                 string url =Common.Common.Url;

@@ -8,82 +8,122 @@
     var listService = (List<ServiceViewModel>) ViewBag.listService;
     var listActGroup= (List<ActivityGroupViewModel>) ViewBag.listActGroup;
 }
+<input type="hidden" id="valService" value="@ViewBag.service"/>
+<script>
+    $(document).ready(function() {
+        $("#sppservice").val($("#valService").val());
+    })
+</script>
 <div class="row" style="margin-top: 35px">
 
     <div class="col-md-3 col-sm-6">
-        <div class="sidebar">
-            <aside class="sidebar-widget">
-                <div class="option-bar clearfix">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="section-heading">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Search Sport</h4>
-                                        <div class="border"></div>
-                                        <p>Search your desire Sport</p>
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post,new {@class="form"}))
+        {
+            <div class="sidebar">
+                <aside class="sidebar-widget">
+                    <div class="option-bar clearfix">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="section-heading">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <i class="fa fa-search"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>Search Sport</h4>
+                                            <div class="border"></div>
+                                            <p>Search your desire Sport</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Review search -->
-                <div class="single-block">
-                    <h2 class="title">CRITERIA</h2>
-                    <form class="form">
+                    <!-- Review search -->
+                    <div class="single-block">
+                        <h2 class="title">CRITERIA</h2>
+                       
+                        <input type="hidden" id="mService" name="service" value="@ViewBag.service"/>
+                        <input type="hidden" id="mactivities" name="activities" value="@ViewBag.activities"/>
+                        <input type="hidden" id="currentFilter" name="currentFilter" value="@ViewBag.CurrentFilter"/>
+                        <input type="hidden" id="minPrice" name="minPrice" value="@ViewBag.minPrice">
+                        <input type="hidden" id="maxPrice" name="maxPrice" value="@ViewBag.maxPrice">
 
-                        <div class="form-group">
-                            <select class="form-control select2-list" data-placeholder="Select an item" multiple="" tabindex="-1">
-                                @foreach (var item in listService)
-                                {
-                                     <option value="@item.Id">@item.NameType</option>
+                        <script>
+                            $(document).ready(function () {
+
+                              
+                                //set current service
+                                var selectedItems = $("#mService").val().split(',');
+                                $('#sppservice').select2('val', selectedItems);
+                                //set current activity
+                                var acSelectedItems = $("#mactivities").val().split(',');
+                                $('#sppactivities').select2('val', acSelectedItems);
+                                //set current price
+                                var min = $("#minPrice").val();
+                                var max = $("#maxPrice").val();
+                                //set value for slider
+                                if (min != '' && max != '') {
+                                    $("#slider-range").slider('values', [min, max]).change();
+                                    $('#range-value1').text(min);
+                                    $('#range-value2').text(max);
                                 }
-                            </select>
-                            <label>Services</label>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control select2-list" data-placeholder="Select an item" multiple="" tabindex="-1">
-                               @foreach (var item in listActGroup)
-                               {
-                                   if (item.Activities.Any())
-                                   {
-                                    <optgroup label="@item.ActivityGroupName">
-                                        @foreach (var ac in item.Activities)
+                              
+                        
+                           })
+                            $("form").submit(function() {
+                                $("#mService").val($('#sppservice').val());
+                                $("#mactivities").val($('#sppactivities').val());
+                            })
+                        </script>
+                            <div class="form-group">
+                                <select class="form-control select2-list"id="sppservice"  data-placeholder="Select an item" multiple="" tabindex="-1">
+                                    @foreach (var item in listService)
+                                    {
+                                        <option value="@item.Id">@item.NameType</option>
+                                    }
+                                </select>
+                                <label>Services</label>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control select2-list" id="sppactivities"  data-placeholder="Select an item" multiple="" tabindex="-1">
+                                    @foreach (var item in listActGroup)
+                                    {
+                                        if (item.Activities.Any())
                                         {
-                                            <option value="@ac.Id">@ac.ActivityName</option>
+                                            <optgroup label="@item.ActivityGroupName">
+                                                @foreach (var ac in item.Activities)
+                                                {
+                                                    <option value="@ac.Id">@ac.ActivityName</option>
 
+                                                }
+                                            </optgroup>
                                         }
-                                    </optgroup>
-                                   }
 
-                               }
-                            </select>
-                            <label>Activities</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="single-block">
-                    <h2 class="title">Price</h2>
-                    <div class="input-group">
-                        <div class="input-group-addon" id="range-value1">1000</div>
-                        <div class="input-group-content form-control-static">
-                            <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                <input type="hidden" id="minPrice" name="minPrice">
-                                <input type="hidden" id="maxPrice" name="maxPrice">
-                                <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 26%; width: 28%;"></div>
-                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 26%;"></span>
-                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 54%;"></span>
+                                    }
+                                </select>
+                                <label>Activities</label>
+                            </div>
+                        @*</form>*@
+                    </div>
+                    <div class="single-block">
+                        <h2 class="title">Price</h2>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon" id="range-value1">1000</div>
+                                <div class="input-group-content form-control-static">
+                                   
+                                    <div id="slider-range"></div>
+                                </div>
+                                <div class="input-group-addon" id="range-value2">5000000</div>
                             </div>
                         </div>
-                        <div class="input-group-addon" id="range-value2">20000000</div>
                     </div>
-                </div>
-            </aside>
-        </div>
+                    <input type="submit" class="btn ink-reaction btn-primary active btn-purchase" value="Apply">
+
+                </aside>
+            </div>
+        }
     </div>
     <div class="col-md-9 col-sm-3">
         <div class="block-heading">
@@ -91,10 +131,10 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-5 cod-pad">
                     <h4>
                         <span class="heading-icon">
-                            <i class="fa fa-caret-right icon-design"></i>
+                            @*<i class="fa fa-caret-right icon-design"></i>*@
                             <i class="fa fa-th-large"></i>
                         </span>
-                        Sport Grid
+                       Find with key '@ViewBag.CurrentFilter'
                     </h4>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7 cod-pad">
@@ -105,8 +145,8 @@
                             <option>Sells: High to low</option>
                             <option>Sells: Low to high</option>
                         </select>
-                        <a href="car-list-2.html" class="change-view-btn"><i class="fa fa-th-list"></i></a>
-                        <a href="car-grid-2.html" class="change-view-btn active-view-btn"><i class="fa fa-th-large"></i></a>
+                        @*<a href="car-list-2.html" class="change-view-btn"><i class="fa fa-th-list"></i></a>
+                        <a href="car-grid-2.html" class="change-view-btn active-view-btn"><i class="fa fa-th-large"></i></a>*@
                     </div>
                 </div>
 
@@ -119,18 +159,7 @@
             {
 
                 var price = 0;
-                @*<div class="item">
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-
-                        <div class="card-body card-body-2">
-                            <div class="image progressive" style="width: 225px!important">
-                                <img class="progressive__img progressive--not-loaded" data-progressive="@item.Image" src="@item.Image" />
-                            </div>
-
-                        </div>
-                    </div>
-                </div>*@
-                @*<div class="item" >*@
+             
                     <div class="item" style="float: left;position: relative;min-height: 1px;padding-left: 12px;padding-right: 12px;">
                         @*<div class="col-xs-12 col-sm-6 col-md-3">*@
                         <div style="width: 25%">
@@ -182,7 +211,7 @@
 
         </div>
         <div class="row">
-            @Html.PagedListPager(Model, page => Url.Action("Search", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            @Html.PagedListPager(Model, page => Url.Action("Search", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, minPrice=ViewBag.minPrice, maxPrice=ViewBag.maxPrice, service= ViewBag.service , activities =ViewBag.activities }))
         </div>
     </div>
 

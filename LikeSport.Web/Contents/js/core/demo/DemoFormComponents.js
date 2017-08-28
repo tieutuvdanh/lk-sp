@@ -132,9 +132,10 @@
 				$('#step-value').empty().append(ui.value);
 			}
 		});
-		$("#slider-range").slider({range: true, min: 0, max: 20000000, values: [1000, 5000000],
+		$("#slider-range").slider({
+		    range: true, min: 0, max: 20000000, step: 1000, values: [1000, 5000000],
 			slide: function (event, ui) {
-				$('#range-value1').empty().append(ui.values[ 0 ]);
+				$('#range-value1').empty().append(ui.values[0]);
 				$('#range-value2').empty().append(ui.values[1]);
 				$('#minPrice').val(ui.values[0]);
 				$('#maxPrice').val(ui.values[1]);
